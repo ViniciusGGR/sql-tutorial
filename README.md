@@ -5,7 +5,15 @@ Curso completo sobre SQL do site W3Schools - [**Link - Tutorial SQL**](https://w
 ---
 
 - [SQL Intro](./content/README.md/#sql-intro)
+    - [What is SQL?](./content/README.md/#o-que-é-sql)
+    - [What Can SQL do?](./content/README.md/#o-que-o-sql-pode-fazer)
+    - [SQL is a Standard - BUT...](./content/README.md/#sql-é-um-padrão---mas)
+    - [RDBMS:](./content/README.md/#rdbms)
 - [SQL Syntax](./content/README.md/#sql-syntax)
+    - [SQL Statements](./content/README.md/#instruções-sql)
+    - [Keep in Mind That...](./content/README.md/#tenha-em-mente-que)
+    - [Semicolon after SQL Statements?](./content/README.md/#ponto-e-vírgula-após-instruções-sql)
+    - [Some of The Most Important SQL Commands](./content/README.md/#alguns-dos-comandos-sql-mais-importantes)
 - [SQL Select]()
 - [SQL Select Distinct]()
 - [SQL Where]()

@@ -59,4 +59,43 @@ Um _registro, também chamado de linha_, é cada entrada individual que existe e
 
 ## SQL Syntax
 
+Um banco de dados geralmente contém uma ou mais tabelas. Cada tabela é identificada por um nome (por exemplo, "Customers" ou "Orders"). As tabelas contêm registros (linhas) com dados.
+
+### Instruções SQL:
+
+A maioria das ações executadas em um banco de dados é feita com instruções SQL. A instrução SQL a seguir seleciona todos os registros na tabela "Customers":
+
+```
+SELECT * FROM Customers;
+```
+
+### Tenha em mente que...
+
+- As palavras-chave SQL **NÃO** diferenciam maiúsculas de minúsculas: ``select`` é o mesmo que ``SELECT``.
+
+> **Nota**: Por convenção, todas as palavras-chave SQL normalmente são em _letras maiúsculas_.
+
+### Ponto e vírgula após instruções SQL?
+
+Alguns sistemas de banco de dados requerem um ponto e vírgula no final de cada instrução SQL.
+
+O ponto e vírgula é a forma padrão de separar cada instrução SQL em sistemas de banco de dados que permitem que mais de uma instrução SQL seja executada na mesma chamada para o servidor.
+
+> **Nota**: Por convenção, normalmente é utilizado o ponto e vírgula no final de cada instrução SQL.
+
+### Alguns dos comandos SQL mais importantes:
+
+- **``SELECT``** - Extrai dados de um banco de dados.
+- **``UPDATE``** - Atualiza dados em um banco de dados.
+- **``DELETE``** - Exclui dados de um banco de dados.
+- **``INSERT INTO``** - Insere novos dados em um banco de dados.
+- **``CREATE DATABASE``** - Cria um novo banco de dados.
+- **``ALTER DATABASE``** - Modifica um banco de dados.
+- **``CREATE TABLE``** - Cria uma nova tabela.
+- **``ALTER TABLE``** - Modifica uma tabela.
+- **``DROP TABLE``** - Exclui uma tabela.
+- **``CREATE INDEX``** - Cria um índice (chave de pesquisa)
+- **``DROP INDEX``** - Exclui um índice.
+
+---
 

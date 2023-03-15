@@ -99,3 +99,41 @@ O ponto e vírgula é a forma padrão de separar cada instrução SQL em sistema
 
 ---
 
+## SQL Select
+
+A instrução ``SELECT`` é usada para selecionar dados de um banco de dados.
+
+Os dados retornados são armazenados em uma tabela de resultados, chamada conjunto de resultados.
+
+```
+SELECT column1, column2, ...
+FROM table_name;
+```
+
+- _column1_, _column2_ ... são os nomes dos campos da tabela da qual se deseja selecionar os dados. Caso queira selecionar todos os campos disponíveis na tabela, utilize a seguinte sintaxe:
+
+```
+SELECT * FROM table_name;
+```
+
+### Exemplo de Coluna SELECT:
+
+A instrução SQL a seguir seleciona as colunas "CustomerName" e "City" da tabela "Customers":
+
+```
+SELECT CustomerName, City FROM Customers;
+```
+
+### SELECT * Exemplo:
+
+A instrução SQL a seguir seleciona todas as colunas da tabela "Customers":
+
+```
+SELECT * FROM Customers;
+```
+
+---
+
+
+
+

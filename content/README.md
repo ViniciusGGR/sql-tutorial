@@ -134,6 +134,41 @@ SELECT * FROM Customers;
 
 ---
 
+## SQL Select Distinct
+
+A instrução ``SELECT DISTINCT`` é usada para retornar apenas valores distintos (diferentes).
+
+Dentro de uma tabela, uma coluna geralmente contém muitos valores duplicados, e às vezes você deseja apenas listar os valores diferentes (distintos).
+
+```
+SELECT DISTINCT column1, column2, ...
+FROM table_name;
+```
+
+### Exemplo de SELECT sem DISTINCT:
+
+A instrução SQL a seguir seleciona todos os valores (incluindo os duplicados) da coluna "Country" na tabela "Customers":
+
+```
+SELECT Country FROM Customers;
+```
+
+### Exemplos de SELECT DISTINCT:
+
+A instrução SQL a seguir seleciona apenas os valores DISTINCT da coluna "Country" na tabela "Customers":
+
+```
+SELECT DISTINCT Country FROM Customers;
+```
+
+A instrução SQL a seguir lista o número de "Country" diferentes (distintos) na tabela "Customers":
+
+```
+SELECT COUNT(DISTINCT Country) FROM Customers;
+```
+
+---
+
 
 
 

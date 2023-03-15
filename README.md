@@ -1,6 +1,6 @@
 # SQL Tutorial
 
-Curso completo sobre SQL do site W3Schools.
+Curso completo sobre SQL do site W3Schools - [**Link - Tutorial SQL**](https://www.w3schools.com/sql/default.asp).
 
 ---
 

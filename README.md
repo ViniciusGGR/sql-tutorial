@@ -4,7 +4,7 @@ Curso completo sobre SQL do site W3Schools - [**Link - Tutorial SQL**](https://w
 
 ---
 
-- [SQL Intro]()
+- [SQL Intro](./content/README.md/#sql-intro)
 - [SQL Syntax]()
 - [SQL Select]()
 - [SQL Select Distinct]()

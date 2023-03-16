@@ -169,6 +169,58 @@ SELECT COUNT(DISTINCT Country) FROM Customers;
 
 ---
 
+## SQL Where
 
+A cláusula ``WHERE`` é usada para filtrar registros. Ele é usado para extrair apenas os registros que atendem a uma condição especificada.
+
+```
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+> **Nota**: A cláusula ``WHERE`` não é usada apenas em declarações ``SELECT``, ela também é usada em ``UPDATE``, ``DELETE``, etc.
+
+### Exemplo de Cláusula WHERE:
+
+A instrução SQL a seguir seleciona todos os cliente do país "Mexico", na tabela "Customers":
+
+```
+SELECT * FROM Customers
+WHERE Country='Mexico';
+```
+
+### Campos de Texto vs. Campos Numéricos:
+
+SQL requer aspas simples em torno de valores de texto (a maioria dos sistemas de banco de dados também permite aspas duplas).
+
+No entanto, os **_campos numéricos não devem ser colocados entre aspas_**:
+
+```
+SELECT * FROM Customers
+WHERE CustomerID=1;
+```
+
+### Operadores na cláusula WHERE:
+
+Os seguintes operadores podem ser usados na cláusula ``WHERE``:
+
+| Operadores | Descrição                                                  |
+| ---------- | ---------------------------------------------------------- |
+| =          | Igual.                                                     |
+| >          | Maior que.                                                 |
+| <          | Menor que.                                                 |
+| >=         | Maior ou igual.                                            |
+| <=         | Menor ou igual.                                            |
+| <>         | Não igual.                                                 |
+| BETWEEN    | Entre um determinado intervalo.                            |
+| LIKE       | Pesquisar um padrão.                                       |
+| IN         | Para especificar vários valores possíveis para uma coluna. |
+
+> **Nota**: Em algumas versões do SQL, o operador **Não igual (<>)** pode ser escrito como **!=**.
+
+---
+
+## SQL And, Or, Not
 
 

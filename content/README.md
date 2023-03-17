@@ -702,4 +702,69 @@ FROM Products;
 
 ## SQL Count, Avg, Sum
 
+A função ``COUNT()`` retorna o número de linhas que correspondem a um critério especificado.
 
+**Sintaxe COUNT():**
+
+```
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+```
+
+A função ``AVG()`` retorna o valor médio de uma coluna numérica.
+
+**Sintaxe AVG():**
+
+```
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+```
+
+A função ``SUM()`` retorna a soma total de uma coluna numérica.
+
+**Sintaxe SUM():**
+
+```
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+```
+
+### Exemplo COUNT():
+
+A instrução SQL a seguir localiza o número de produtos:
+
+```
+SELECT COUNT(ProductID)
+FROM Products;
+```
+
+> **Observação**: Os valores ``NULL`` não são contados.
+
+### Exemplo AVG():
+
+A instrução SQL a seguir localiza o preço médio de todos os produtos:
+
+```
+SELECT AVG(Price)
+FROM Products;
+```
+
+> **Observação**: Os valores ``NULL`` são ignorados.
+
+### Exemplo SUM():
+
+A instrução SQL a seguir localiza a soma dos campos "Quantity" na tabela "OrderDetails":
+
+```
+SELECT SUM(Quantity)
+FROM OrderDetails;
+```
+
+> **Observação**: Os valores ``NULL`` são ignorados.
+
+---
+
+## SQL Like

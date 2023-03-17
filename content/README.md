@@ -511,4 +511,40 @@ SET ContactName='Juan';
 
 ## SQL Delete
 
+A instrução ``DELETE`` é usada para excluir registros existentes em uma tabela.
+
+**Sintaxe DELETE:**
+
+```
+DELETE FROM table_name WHERE condition;
+```
+
+> **Nota**: Cuidado ao excluir registros em uma tabela! Observe a cláusula ``WHERE`` na declaração ``DELETE``. A cláusula ``WHERE`` especifica quais registros devem ser excluidos. Se omitido a cláusula ``WHERE``, todos os registros da tabela serão excluidos!
+
+### Exemplo SQL DELETE:
+
+A instrução SQL a seguir exclui o cliente "Alfreds Futterkiste" da tabela "Customers":
+
+```
+DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+```
+
+### Excluir todos os registros:
+
+É possível excluir todas as linhas de uma tabela sem excluir a tabela. Isso significa que a estrutura, os atributos e os índices da tabela estarão intactos:
+
+```
+DELETE FROM table_name;
+```
+
+A instrução SQL a seguir exclui todas as linhas da tabela "Customers", sem excluir a tabela:
+
+```
+DELETE FROM Customers;
+```
+
+---
+
+## SQL Select Top
+
 

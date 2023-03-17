@@ -223,4 +223,93 @@ Os seguintes operadores podem ser usados na cláusula ``WHERE``:
 
 ## SQL And, Or, Not
 
+A cláusula ``WHERE`` pode ser combinada com os operadores ``AND``, ``OR`` e ``NOT``.
+
+Os operadores ``AND`` e ``OR`` são usados para filtrar registros com base em mais de uma condição:
+
+- O operador ``AND`` exibe um registro se todas as condições separadas por ``AND`` forem **TRUE**.
+- O operador ``OR`` exibe um registro se alguma das condições separadas por ``OR`` for **TRUE**.
+
+O operador ``NOT`` exibe um registro se a(s) condição(ões) NÃO FOR(EM) VERDADEIRA(S).
+
+**Sintaxe AND**:
+
+```
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 AND condition2 AND condition3 ...;
+```
+
+**Sintaxe OR**:
+
+```
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 OR condition2 OR condition3 ...;
+```
+
+**Sintaxe NOT**:
+
+```
+SELECT column1, column2, ...
+FROM table_name
+WHERE NOT condition;
+```
+
+### Exemplo AND:
+
+A instrução SQL a seguir seleciona todos os campos de "Customers" em que o país é "Germany" AND (**E**) a cidade é "Berlin":
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany' AND City='Berlin';
+```
+
+### Exemplo OR:
+
+A instrução SQL a seguir seleciona todos os campos de "Customers" onde a cidade é "Berlin" OR (**OU**) "München":
+
+```
+SELECT * FROM Customers
+WHERE City='Berlin' OR City='München';
+```
+
+A instrução SQL a seguir seleciona todos os campos de "Customers" onde o país é "Germany" OR (**OU**) "Spain":
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany' OR Country='Spain';
+```
+
+### Exemplo NOT:
+
+A instrução SQL a seguir seleciona todos os campos de "Customers" onde o país NÃO é "Germany":
+
+```
+SELECT * FROM Customers
+WHERE NOT Country='Germany';
+```
+
+### Combinando AND, OR e NOT:
+
+Também é possível combinar os operadores ``AND``, ``OR`` e ``NOT``.
+
+A instrução SQL a seguir seleciona todos os campos de "Customers" onde o país é "Germany" AND (**E**) a cidade deve ser "Berlin" OR (**OU**) "München" (usando parênteses para formar expressões complexas):
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+```
+
+A instrução SQL a seguir seleciona todos os campos de "Customers" onde o país NOT (**NÃO**) é "Germany" e NOT (**NÃO**) "USA":
+
+```
+SELECT * FROM Customers
+WHERE NOT Country='Germany' AND NOT Country='USA';
+```
+
+---
+
+## SQL Order By
+
 

@@ -768,3 +768,83 @@ FROM OrderDetails;
 ---
 
 ## SQL Like
+
+O operador ``LIKE`` é usado em uma cláusula ``WHERE`` para pesquisar um padrão especificado em uma coluna.
+
+Existem dois curingas frequentemente usados em conjunto com o operador ``LIKE``:
+- O _sinal de porcentagem_ (%) representa zero, um ou vários caracteres.
+- O _sinal de sublinhado_ (_) representa um único caractere.
+
+> **Observação**: O MS Access usa um asterisco (*) em vez do sinal de porcentagem (%) e um ponto de interrogação (?) em vez do sublinhado (_).
+
+O sinal de porcentagem (%) e o sublinhado (_) também podem ser usados em combinações!
+
+**Sintaxe LIKE:**
+
+```
+SELECT column1, column2, ...
+FROM table_name
+WHERE columnN LIKE pattern;
+```
+
+> **Dica**: Também é possível combinar qualquer número de condições usando operadores ``AND`` ou ``OR``.
+
+Alguns exemplos mostrando diferentes operadores ``LIKE`` com curingas '%' e '_':
+
+| Operador LIKE                  | Descrição
+| ------------------------------ | ----------------
+| WHERE CustomerName LIKE 'a%'   | Encontra todos os valores que começam com "a".
+| WHERE CustomerName LIKE '%a'   | Encontra todos os valores que terminam com "a".
+| WHERE CustomerName LIKE '%or%' | Localiza quaisquer valores que tenham "or" em qualquer posição.
+| WHERE CustomerName LIKE '_r%'  | Localiza quaisquer valores que tenham "r" na segunda posição.
+| WHERE CustomerName LIKE 'a_%'  | Localiza todos os valores que começam com "a" e têm pelo menos 2 caracteres de comprimento.
+| WHERE CustomerName LIKE 'a__%' | Localiza todos os valores que começam com "a" e têm pelo menos 3 caracteres de comprimento.
+| WHERE CustomerName LIKE 'a%o'  | Encontra todos os valores que começam com "a" e terminam com "o".
+
+### Exemplos de SQL LIKE:
+
+- A instrução SQL a seguir seleciona todos os clientes com um _CustomerName_ começando com "a":
+    ```
+    SELECT * FROM Customers
+    WHERE CustomerName LIKE 'a%';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com um _CustomerName_ terminando com "a":
+    ```
+    SELECT * FROM Customers
+    WHERE CustomerName LIKE '%a';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com um _CustomerName_ que tenham "or" em qualquer posição:
+    ```
+    SELECT * FROM Customers
+    WHERE CustomerName LIKE '%or%';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com um _CustomerName_ que tenha "r" na segunda posição:
+    ```
+    SELECT * FROM Customers
+    WHERE CustomerName LIKE '_r%';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com um _CustomerName_ que começa com "a" e tem pelo menos 3 caracteres:
+    ```
+    SELECT * FROM Customers
+    WHERE CustomerName LIKE 'a__%';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com um _CustomerName_ que começa com "a" e termina com "o":
+    ```
+    SELECT * FROM Customers
+    WHERE CustomerName LIKE 'a%o';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com um _CustomerName_ que **NÃO** começa com "a":
+    ```
+    SELECT * FROM Customers
+    WHERE CustomerName NOT LIKE 'a%';
+    ```
+
+---
+
+## SQL Wildcards

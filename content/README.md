@@ -406,4 +406,60 @@ VALUES ('Cardinal', 'Stavanger', 'Norway');
 
 ## SQL Null Values
 
+### O que é um valor NULL?
 
+Um campo com valor ``NULL`` é um _campo sem valor_.
+
+Se um campo em uma tabela for opcional, é possível inserir um novo registro ou atualizar um registro sem adicionar um valor a este campo. Em seguida, o campo será salvo com um valor ``NULL``.
+
+> **Observação**: Um valor ``NULL`` é diferente de um valor zero ou de um campo que contém espaços. Um campo com valor ``NULL`` é aquele que foi deixado em branco durante a criação do registro.
+
+### Como testar valores NULL?
+
+Não é possível testar valores ``NULL`` com operadores de comparação, como =, < ou <>. Tem que usar os operadores ``IS NULL`` e ``IS NOT NULL``.
+
+**Sintaxe IS NULL:**
+
+```
+SELECT column_names
+FROM table_name
+WHERE column_name IS NULL;
+```
+
+**Sintaxe IS NOT NULL:**
+
+```
+SELECT column_names
+FROM table_name
+WHERE column_name IS NOT NULL;
+```
+
+### O operador IS NULL:
+
+O operador ``IS NULL`` é usada para testar valores vazios (valores ``NULL``).
+
+O SQL a seguir lista todos os clientes com um valor ``NULL`` no campo "Address":
+
+```
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NULL;
+```
+
+> **Dica**: Sempre utilize ``IS NULL`` para procurar valores **``NULL``**.
+
+### O operador IS NOT NULL:
+
+O operador ``IS NOT NULL`` é usado para testar valores não vazios (valores ``NOT NULL``).
+
+O SQL a seguir lista todos os clientes com um valor no campo "Address":
+
+```
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NOT NULL;
+```
+
+---
+
+## SQL Update

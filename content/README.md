@@ -547,4 +547,118 @@ DELETE FROM Customers;
 
 ## SQL Select Top
 
+A cláusula ``SELECT TOP`` é usada para especificar o número de registros a serem retornados.
+
+A cláusula ``SELECT TOP`` é útil em tabelas grandes com milhares de registros. Retornar um grande número de registros pode afetar o desempenho.
+
+> **Observação**: Nem todos os sistemas de banco de dados suportam a cláusula ``SELECT TOP``. O **MySQL** suporta a cláusula ``LIMIT`` para selecionar um número limitado de registros, enquanto o Oracle usa ``FETCH FIRST n ROWS ONLY`` and ``ROWNUM``.
+
+**Sintaxe do SQL Server | MS Access:**
+
+```
+SELECT TOP number|percent column_name(s)
+FROM table_name
+WHERE condition;
+```
+
+**Sintaxe do MySQL:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+LIMIT number;
+```
+
+**Sintaxe do Oracle 12:**
+
+```
+SELECT column_name(s)
+FROM table_name
+ORDER BY column_name(s)
+FETCH FIRST number ROWS ONLY;
+```
+
+**Sintaxe do Oracle mais antigo:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE ROWNUM <= number;
+```
+
+**Sintaxe Oracle mais antiga (com ORDER BY):**
+
+```
+SELECT *
+FROM (SELECT column_name(s) FROM table_name ORDER BY column_name(s))
+WHERE ROWNUM <= number;
+```
+
+### Exemplos SQL TOP, LIMIT e FETCH FIRST:
+
+A instrução SQL a seguir seleciona os três primeiros registros da tabela "Customers" (para SQL Server | MS Access):
+
+```
+SELECT TOP 3 * FROM Customers;
+```
+
+A instrução SQL a seguir mostra o exemplo equivalente para MySQL:
+
+```
+SELECT * FROM Customers
+LIMIT 3;
+```
+
+A instrução SQL a seguir mostra o exemplo equivalente para Oracle:
+
+```
+SELECT * FROM Customers
+FETCH FIRST 3 ROWS ONLY;
+```
+
+### Exemplo SQL TOP PERCENT:
+
+A instrução SQL a seguir seleciona os primeiros 50% dos registros da tabela "Customers" (para SQL Server | MS Access):
+
+```
+SELECT TOP 50 PERCENT * FROM Customers;
+```
+
+A instrução SQL a seguir mostra o exemplo equivalente para Oracle:
+
+```
+SELECT * FROM Customers
+FETCH FIRST 50 PERCENT ROWS ONLY;
+```
+
+### Adicione uma cláusula WHERE:
+
+A instrução SQL a seguir seleciona os três primeiros registros da tabela "Customers", onde o país é "Germany" (para SQL Server | MS Access): 
+
+```
+SELECT TOP 3 * FROM Customers
+WHERE Country='Germany';
+```
+
+A instrução SQL a seguir mostra o exemplo equivalente para MySQL:
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany'
+LIMIT 3;
+```
+
+A instrução SQL a seguir mostra o exemplo equivalente para Oracle:
+
+```
+SELECT * FROM Customers
+WHERE Country='Germany'
+FETCH FIRST 3 ROWS ONLY;
+```
+
+---
+
+## SQL Min and Max
+
 

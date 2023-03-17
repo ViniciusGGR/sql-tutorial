@@ -463,3 +463,52 @@ WHERE Address IS NOT NULL;
 ---
 
 ## SQL Update
+
+A instrução ``UPDATE`` é usada para modificar os registros existentes em uma tabela.
+
+**Sintaxe UPDATE:**
+
+```
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+> **Nota**: Tenha cuidado ao atualizar registros em uma tabela! Observe a cláusula ``WHERE`` na declaração ``UPDATE``. A cláusula ``WHERE`` especifica quais registros devem ser atualizados. Se omitido a cláusula ``WHERE``, todos os registros da tabela serão atualizados!
+
+### Tabela UPDATE:
+
+A instrução SQL a seguir atualiza o primeiro cliente ("CustomerID = 1") com uma nova "ContactName" e uma nova "City".
+
+```
+UPDATE Customers
+SET ContactName='Alfred Schmidt', City='Frankfurt'
+WHERE CustomerID = 1; 
+```
+
+### Múltiplos Registros UPDATE:
+
+É a cláusula ``WHERE`` que determina quantos registros serão atualizados.
+
+A instrução SQL a seguir atualizará o "ContactName" para "Juan" para todos os registros em que o "Country" é "Mexico":
+
+```
+UPDATE Customers
+SET ContactName='Juan'
+WHERE Country='Mexico';
+```
+
+### Aviso de UPDATE!
+
+> **Nota**: Cuidado ao atualizar registros. Se omitido a cláusula ``WHERE``, _TODOS_ os registros serão atualizados!
+
+```
+UPDATE Customers
+SET ContactName='Juan';
+```
+
+---
+
+## SQL Delete
+
+

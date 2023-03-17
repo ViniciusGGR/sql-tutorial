@@ -312,4 +312,52 @@ WHERE NOT Country='Germany' AND NOT Country='USA';
 
 ## SQL Order By
 
+A palavra-chave ``ORDER BY`` é usada para classificar o conjunto de resultados em ordem crescente ou decrescente.
+
+A palavra-chave ``ORDER BY`` _classifica os registros em ordem crescente por padrão_. Para classificar os registros em ordem decrescente, basta utilizar a palavra-chave ``DESC``.
+
+```
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+```
+
+### Exemplo ORDER BY:
+
+A instrução SQL a seguir seleciona todos os clientes da tabela "Customers", classificados pela coluna "Country":
+
+```
+SELECT * FROM Customers
+ORDER BY Country;
+```
+
+### Exemplo ORDER BY DESC:
+
+A instrução SQL a seguir seleciona todos os clientes da tabela "Customers", classificados em ordem DECRESCENTE pela coluna "Country":
+
+```
+SELECT * FROM Customers
+ORDER BY Country DESC;
+```
+
+### Exemplo ORDER BY Várias Colunas:
+
+A instrução SQL a seguir seleciona todos os clientes da tabela "Customers", classificados pela coluna "Country" e "CustomerName". Isso significa que ele ordena por país, mas se algumas linhas tiverem o mesmo "Country", ele as ordena por "CustomerName":
+
+```
+SELECT * FROM Customers
+ORDER BY Country, CustomerName;
+```
+
+A instrução SQL a seguir seleciona todos os clientes da tabela "Customers", classificados em ordem crescente pelo "Country" e decrescente pela coluna "CustomerName":
+
+```
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+```
+
+---
+
+## SQL Insert Into
+
 

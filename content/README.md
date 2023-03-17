@@ -360,4 +360,50 @@ ORDER BY Country ASC, CustomerName DESC;
 
 ## SQL Insert Into
 
+A instrução ``INSERT INTO`` é usada para inserir novos registros em uma tabela.
+
+**INSERT INTO Sintaxe:**
+
+É possível escrever a declaração ``INSERT INTO`` de duas maneiras.
+
+1. Especificando os nomes das colunas e os valores a serem inseridos:
+    ```
+    INSERT INTO table_name (column1, column2, column3, ...)
+    VALUES (value1, value2, value3, ...);
+    ```
+
+2. Adicionando valores para todas as colunas da tabela, não é preciso especificar os nomes das colunas na consulta SQL. No entanto, certifique-se de que a ordem dos valores esteja na mesma ordem das colunas da tabela. Aqui, a sintaxe do ``INSERT INTO`` seria a seguinte:
+    ```
+    INSERT INTO table_name
+    VALUES (value1, value2, value3, ...);
+    ```
+
+### Exemplo INSERT INTO:
+
+A instrução SQL a seguir insere um novo registro na tabela "Customers":
+
+```
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+```
+
+> **Nota**: Não foi inserido nenhum número no campo _CustomerID_, pois essa coluna é um campo de **auto-incremento** e será gerado automaticamente quando um novo registro for inserido na tabela.
+
+### Inserir dados apenas nas colunas especificadas:
+
+Também é possível inserir dados apenas em colunas específicas.
+
+A seguinte instrução SQL irá inserir um novo registro, mas apenas inserir dados nas colunas "CustomerName", "City" e "Country" ("CustomerID" será atualizado automaticamente):
+
+```
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+```
+
+> **Nota**: As colunas que não foram especificadas, receberam os valores **``null``**.
+
+---
+
+## SQL Null Values
+
 

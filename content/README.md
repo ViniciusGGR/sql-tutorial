@@ -661,4 +661,45 @@ FETCH FIRST 3 ROWS ONLY;
 
 ## SQL Min and Max
 
+- A função ``MIN()`` retorna o menor valor da coluna selecionada.
+- A função ``MAX()`` retorna o maior valor da coluna selecionada.
+
+**Sintaxe MIN():**
+
+```
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+```
+
+**Sintaxe MAX():**
+
+```
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+```
+
+### Exemplo MIN():
+
+A instrução SQL a seguir localiza o preço do produto mais barato:
+
+```
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
+```
+
+### Exemplo MAX():
+
+A instrução SQL a seguir encontra o preço do produto mais caro:
+
+```
+SELECT MAX(Price) AS LargestPrice
+FROM Products;
+```
+
+---
+
+## SQL Count, Avg, Sum
+
 

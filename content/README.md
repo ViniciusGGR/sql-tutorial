@@ -941,3 +941,46 @@ Todos os _curingas_ também podem ser usados em combinações!
 ---
 
 ## SQL In
+
+O operador ``IN`` permite especificar vários valores em uma cláusula ``WHERE``. O operador ``IN`` é um atalho para várias condições ``OR``.
+
+**Sintaxe IN:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...);
+```
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (SELECT STATEMENT);
+```
+
+### Exemplos do Operador IN:
+
+- A instrução SQL a seguir seleciona todos os clientes localizados nos países "Germany", "France" ou "UK":
+    ```
+    SELECT * FROM Customers
+    WHERE Country IN ('Germany', 'France', 'UK');
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes que **NÃO** estão localizados nos países "Germany", "France" ou "UK":
+    ```
+    SELECT * FROM Customers
+    WHERE Country NOT IN ('Germany', 'France', 'UK');
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes que são dos mesmos  países que os fornecedores:
+    ```
+    SELECT * FROM Customers
+    WHERE Country IN (SELECT Country FROM Suppliers);
+    ```
+
+---
+
+## SQL Between
+
+
+

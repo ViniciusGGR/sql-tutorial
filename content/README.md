@@ -982,5 +982,82 @@ WHERE column_name IN (SELECT STATEMENT);
 
 ## SQL Between
 
+O operador ``BETWEEN`` seleciona valores dentro de um determinado intervalo. Os valores podem ser números, texto ou datas. O operador ``BETWEEN`` é _inclusivo_: os valores inicial e final são incluídos.
+
+**Sintaxe BETWEEN:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+```
+
+### Exemplo BETWEEN:
+
+- A instrução SQL a seguir seleciona todos os produtos com preço **entre** 10 e 20:
+    ```
+    SELECT * FROM Products
+    WHERE Price BETWEEN 10 AND 20;
+    ```
+
+### Exemplo NOT BETWEEN:
+
+- Para exibir os produtos fora do intervalo do exemplo anterior, utilize ``NOT BETWEEN``:
+    ```
+    SELECT * FROM Products
+    WHERE Price NOT BETWEEN 10 AND 20;
+    ```
+
+### Exemplo BETWEEN com IN:
+
+- A instrução SQL a seguir seleciona todos os produtos com preço **entre** 10 e 20. Além disso, não mostre produtos com um "CategoryID" de 1, 2 ou 3:
+    ```
+    SELECT * FROM Products
+    WHERE Price BETWEEN 10 AND 20
+    AND CategoryID NOT IN (1,2,3);
+    ```
+
+### Exemplo BETWEEN com Valores Textuais:
+
+- A instrução SQL a seguir seleciona todos os produtos com um "ProductName" **entre** _Carnarvon Tigers_ e _Mozzarella di Giovanni_:
+    ```
+    SELECT * FROM Products
+    WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+    ORDER BY ProductName;
+    ```
+
+- A instrução SQL a seguir seleciona todos os produtos com um "ProductName" **entre** _Carnarvon Tigers_ e _Chef Anton's Cajun Seasoning_:
+    ```
+    SELECT * FROM Products
+    WHERE ProductName BETWEEN "Carnarvon Tigers" AND "Chef Anton's Cajun Seasoning"
+    ORDER BY ProductName;
+    ```
+
+### Exemplo NOT BETWEEN com Valores Textuais:
+
+- A instrução SQL a seguir seleciona todos os produtos com um "ProductName" **não entre** _Carnarvon Tigers_ e _Mozzarella di Giovanni_:
+    ```
+    SELECT * FROM Products
+    WHERE ProductName NOT BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+    ORDER BY ProductName;
+    ```
+
+### Exemplo BETWEEN com Datas:
+
+- A instrução SQL a seguir seleciona todos os pedidos com OrderDate **entre** '01-July-1996' e '31-July-1996':
+    ```
+    SELECT * FROM Orders
+    WHERE OrderDate BETWEEN #07/01/1996# AND #07/31/1996#;
+    ```
+
+    ```
+    SELECT * FROM Orders
+    WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+    ```
+
+---
+
+## SQL Aliases
+
 
 

@@ -848,3 +848,96 @@ Alguns exemplos mostrando diferentes operadores ``LIKE`` com curingas '%' e '_':
 ---
 
 ## SQL Wildcards
+
+Um _caractere curinga_ é usado para substituir um ou mais caracteres em uma string.
+
+Os _caracteres curinga_ são usados com o operador ``LIKE``. O operador ``LIKE`` é usado em uma cláusula ``WHERE`` para pesquisar um padrão especificado em uma coluna.
+
+**_Caracteres curinga_ no MS Access:**
+
+``*`` - Representa zero ou mais caracteres. - ``bl*`` localiza _black_, _blue_ e _blob_.  
+``?`` - Representa um único caractere. - ``h?t`` localiza _hot_, _hat_ e _hit_.  
+``[]`` - Representa qualquer caractere único dentro dos colchetes. - ``h[oa]t`` localiza _hot_ e _hat_, mas não _hit_.  
+``!`` - Representa qualquer caractere que não esteja entre colchetes. - ``h[!oa]t`` localiza _hit_, mas não _hot_ e _hat_.  
+``-`` - Representa qualquer caractere único dentro do intervalo especificado. - ``c[a-b]t`` localiza _cat_ e _cbt_.  
+``#`` - Representa qualquer caractere numérico único. - ``2#5`` localiza 205, 215, 225, 235, 245, 255, 265, 275, 285 e 295.  
+
+**_Caracteres curinga_ no SQL Server:**
+
+``%`` - Representa zero ou mais caracteres. - ``bl%`` localiza _black_, _blue_ e _blob_.  
+``_`` - Representa um único caractere. - ``h_t`` localiza _hot_, _hat_ e _hit_.  
+``[]`` - Representa qualquer caractere único dentro dos colchetes. - ``h[oa]t`` localiza _hot_ e _hat_, mas não _hit_.  
+``^`` - Representa qualquer caractere que não esteja entre colchetes. - ``h[^oa]t`` localiza _hit_, mas não _hot_ e _hat_.  
+``-`` - Representa qualquer caractere único dentro do intervalo especificado. - ``c[a-b]t`` localiza _cat_ e _cbt_.  
+
+Todos os _curingas_ também podem ser usados em combinações!
+
+- Alguns exemplos mostrando diferentes operadores ``LIKE`` com curingas '%' e '_':
+
+| Operador LIKE                  | Descrição
+| ------------------------------ | -----------------
+| WHERE CustomerName LIKE 'a%'   | Encontra todos os valores que começam com "a".
+| WHERE CustomerName LIKE '%a'   | Encontra todos os valores que terminam com "a".
+| WHERE CustomerName LIKE '%or%' | Localiza quaisquer valores que tenham "or" em qualquer posição.
+| WHERE CustomerName LIKE '_r%'  | Localiza quaisquer valores que tenham "r" na segunda posição.
+| WHERE CustomerName LIKE 'a__%' | Encontra todos os valores que começam com "a" e têm pelo menos 3 caracteres de comprimento.
+| WHERE CustomerName LIKE 'a%o'  | Encontra todos os valores que começam com "a" e terminam com "o".
+
+### Usando o curinga %:
+
+- A instrução SQL a seguir seleciona todos os clientes com uma cidade começando com "ber":
+    ```
+    SELECT * FROM Customers
+    WHERE City LIKE 'ber%';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com uma cidade contendo o padrão "es":
+    ```
+    SELECT * FROM Customers
+    WHERE City LIKE '%es%';
+    ```
+
+### Usando o curinga _:
+
+- A instrução SQL a seguir seleciona todos os clientes com uma cidade começando com qualquer caractere, seguido de "ondon":
+    ```
+    SELECT * FROM Customers
+    WHERE City LIKE '_ondon';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com uma cidade começando com "L", seguido de qualquer caractere, seguido de "n", seguido de qualquer caractere, seguido de "on":
+    ```
+    SELECT * FROM Customers
+    WHERE City LIKE 'L_n_on';
+    ```
+
+### Usando o curinga [charlist]:
+
+- A instrução SQL a seguir seleciona todos os clientes com uma cidade começando com "b", "s" ou "p":
+    ```
+    SELECT * FROM Customers
+    WHERE City LIKE '[bsp]%';
+    ```
+
+- A instrução SQL a seguir seleciona todos os clientes com uma cidade começando com "a", "b" ou "c":
+    ```
+    SELECT * FROM Customers
+    WHERE City LIKE '[a-c]%';
+    ```
+
+### Usando o curinga [!charlist]:
+
+- As duas instruções SQL a seguir selecionam todos os clientes com uma cidade **NÃO** começando com "b", "s" ou "p":
+    ```
+    SELECT * FROM Customers
+    WHERE City LIKE '[!bsp]%';
+    ```
+
+    ```
+    SELECT * FROM Customers
+    WHERE City NOT LIKE '[bsp]%';
+    ```
+
+---
+
+## SQL In

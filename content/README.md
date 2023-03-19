@@ -1059,5 +1059,87 @@ WHERE column_name BETWEEN value1 AND value2;
 
 ## SQL Aliases
 
+**SQL Aliases** são usados para dar a uma tabela, ou uma coluna em uma tabela, um nome temporário.
+
+Os **Aliases** costumam ser usados para tornar os nomes das colunas mais legíveis.
+
+- Um **alias** só existe durante essa consulta em específico.
+- Um **alias** é criado com a palavra-chave ``AS``.
+
+**Sintaxe da Coluna Alias:**
+
+```
+SELECT column_name AS alias_name
+FROM table_name;
+```
+
+**Sintaxe da Tabela Alias:**
+
+```
+SELECT column_name(s)
+FROM table_name AS alias_name;
+```
+
+### Exemplos de Colunas com Alias:
+
+- A instrução SQL a seguir cria dois **aliases**, um para a coluna "CustomerID" e outro para a coluna "CustomerName":
+    ```
+    SELECT CustomerID AS ID, CustomerName AS Customer
+    FROM Customers;
+    ```
+
+- A instrução SQL a seguir cria dois **aliases**, um para a coluna "CustomerName" e outro para a coluna "ContactName". **Observação**: Requer _aspas duplas_ ou _colchetes_ se o nome do **alias** contiver espaços:
+    ```
+    SELECT CustomerName AS Customer, ContactName AS [Contact Person]
+    FROM Customers;
+    ```
+
+- A instrução SQL a seguir cria um **alias** denominado "Address" que combina quatro colunas (Address, PostalCode, City e Country):
+    ```
+    SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address
+    FROM Customers;
+    ```
+
+    > **Observação**: Para que a instrução SQL acima funcione no _MySQL_, use o seguinte:
+
+    ```
+    SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+    FROM Customers;
+    ```
+
+    > **Observação**: Para que a instrução SQL acima funcione no _Oracle_, use o seguinte:
+
+    ```
+    SELECT CustomerName, (Address || ', ' || PostalCode || ' ' || City || ', ' || Country) AS Address
+    FROM Customers;
+    ```
+
+### Exemplos de Tabelas com Alias:
+
+- A instrução SQL a seguir seleciona todos os pedidos do cliente com "CustomerID=4" (_Around the Horn_). Foi utilizado as tabelas "Customers" e "Orders" e foi dado a elas os **aliases** de "c" e "o" respectivamente (os **aliases** foram utilizados para tornar o SQL mais curto):
+    ```
+    SELECT o.OrderID, o.OrderDate, c.CustomerName
+    FROM Customers AS c, Orders AS o
+    WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
+    ```
+
+- A instrução SQL a seguir é igual à anterior, mas sem **aliases**:
+    ```
+    SELECT Orders.OrderID, Orders.OrderDate, Customers.CustomerName
+    FROM Customers, Orders
+    WHERE Customers.CustomerName='Around the Horn' AND Customers.CustomerID=Orders.CustomerID;
+    ```
+
+**Aliases** podem ser úteis quando:
+- Há mais de uma tabela envolvida em uma consulta.
+- As funções são usadas na consulta.
+- Os nomes das colunas são grandes ou não muito legíveis.
+- Duas ou mais colunas são combinadas.
+
+---
+
+## SQL Joins
+
+
 
 

@@ -1227,4 +1227,31 @@ LEFT JOIN table2 ON table1.column_name = table2.column_name;
 
 ## SQL Right Join
 
+A palavra-chave ``RIGHT JOIN`` retorna todos os registros da tabela à direita e os registros correspondentes da tabela à esquerda. O resultado é _0 registros_ do lado esquerdo, se não houver correspondência.
+
+**Sintaxe RIGHT JOIN:**
+
+```
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2 ON table1.column_name = table2.column_name;
+```
+
+> **Nota**: Em alguns bancos de dados ``RIGHT JOIN`` é chamado de ``RIGHT OUTER JOIN``.
+
+### Exemplo SQL RIGHT JOIN:
+
+- A instrução SQL a seguir retornará todos os funcionários e quaisquer pedidos que eles possam ter feito:
+    ```
+    SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+    FROM Orders
+    RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+    ORDER BY Orders.OrderID;
+    ```
+
+    > **Nota**: A palavra-chave ``RIGHT JOIN`` retorna todos os registros da tabela da direita (Employees), mesmo que não haja correspondências na tabela da esquerda (Orders).
+
+---
+
+## SQL Full Join
 

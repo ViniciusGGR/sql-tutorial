@@ -1164,6 +1164,39 @@ Diferentes tipos de ``JOIN(s)`` no SQL:
 
 ## SQL Inner Join
 
+A palavra-chave ``INNER JOIN`` seleciona registros que possuem valores correspondentes em ambas as tabelas.
 
+**Sintaxe do INNER JOIN:**
+
+```
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2 ON table1.column_name = table2.column_name;
+```
+
+### Exemplo SQL INNER JOIN:
+
+- A instrução SQL a seguir seleciona todos os pedidos com informações do cliente:
+    ```
+    SELECT Orders.OrderID, Customers.CustomerName
+    FROM Orders
+    INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+    ```
+
+    > **Observação**: A palavra-chave ``INNER JOIN`` seleciona todas as linhas de ambas as tabelas, desde que haja uma correspondência entre as colunas. Caso existam registros na tabela "Orders" que não possuam correspondências em "Customers", estes pedidos não serão mostrados!
+
+### JOIN Três Tabelas:
+
+- A instrução SQL a seguir seleciona todos os pedidos com informações do cliente e do remetente:
+    ```
+    SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+    FROM ((Orders
+    INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+    INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+    ```
+
+---
+
+## SQL Left Join
 
 

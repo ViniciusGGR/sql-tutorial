@@ -1255,3 +1255,33 @@ RIGHT JOIN table2 ON table1.column_name = table2.column_name;
 
 ## SQL Full Join
 
+A palavra-chave ``FULL OUTER JOIN`` retorna todos os registros quando há uma correspondência nos registros da tabela à esquerda ou à direita.
+
+> **Dica**: ``FULL OUTER JOIN`` e ``FULL JOIN`` são iguais.
+
+**Sintaxe FULL OUTER JOIN:**
+
+```
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2 ON table1.column_name = table2.column_name
+WHERE condition;
+```
+
+> **Nota**: ``FULL OUTER JOIN`` pode _potencialmente_ retornar conjuntos de resultados muito grandes!
+
+### Exemplo SQL FULL OUTER JOIN:
+
+- A instrução SQL a seguir seleciona todos os clientes e todos os pedidos:
+    ```
+    SELECT Customers.CustomerName, Orders.OrderID
+    FROM Customers
+    FULL OUTER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+    ORDER BY Customers.CustomerName;
+    ```
+
+    > **Observação**: A palavra-chave ``FULL OUTER JOIN`` retorna todos os registros correspondentes de ambas as tabelas, independentemente de a outra tabela corresponder ou não. Portanto, se houver linhas em "Customers" que não correspondam a "Orders" ou se houver linhas em "Orders" que não correspondam a "Customers", essas linhas também serão listadas.
+
+---
+
+## SQL Self Join

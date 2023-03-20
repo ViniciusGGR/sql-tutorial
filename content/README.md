@@ -1199,4 +1199,32 @@ INNER JOIN table2 ON table1.column_name = table2.column_name;
 
 ## SQL Left Join
 
+A palavra-chave ``LEFT JOIN`` retorna todos os registros da tabela à esquerda e os registros correspondentes da tabela à direita. O resultado é _0 registros_ do lado direito, se não houver correspondência.
+
+**Sintaxe LEFT JOIN:**
+
+```
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2 ON table1.column_name = table2.column_name;
+```
+
+> **Nota**: Em alguns bancos de dados, ``LEFT JOIN`` é chamado de ``LEFT OUTER JOIN``.
+
+### Exemplo SQL LEFT JOIN:
+
+- A instrução SQL a seguir selecionará todos os clientes e quaisquer pedidos que eles possam ter:
+    ```
+    SELECT Customers.CustomerName, Orders.OrderID
+    FROM Customers
+    LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+    ORDER BY Customers.CustomerName;
+    ```
+
+    > **Nota**: A palavra-chave ``LEFT JOIN`` retorna todos os registros da tabela da esquerda (Customers), mesmo que não haja correspondências na tabela da direita (Orders).
+
+---
+
+## SQL Right Join
+
 

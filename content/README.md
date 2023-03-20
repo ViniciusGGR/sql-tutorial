@@ -1140,6 +1140,30 @@ FROM table_name AS alias_name;
 
 ## SQL Joins
 
+Uma cláusula ``JOIN`` é usada para combinar linhas de duas ou mais tabelas, com base em uma coluna relacionada entre elas.
+
+Duas tabelas, sendo uma "Orders" e outra "Customers", onde a coluna "CustomerID" na tabela "Orders" se refere ao "CustomerID" na tabela "Customers". Portanto, a relação entre as duas tabelas acima é a coluna "CustomerID".
+
+Com isso, é possível criar a seguinte instrução SQL (que contém um ``INNER JOIN``), que seleciona os registros que possuem valores correspondentes em ambas as tabelas.
+
+```
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+```
+
+### Diferentes tipos de SQL JOINs:
+
+Diferentes tipos de ``JOIN(s)`` no SQL:
+- ``(INNER) JOIN``: Retorna registros que possuem valores correspondentes em ambas as tabelas.
+- ``LEFT (OUTER) JOIN``: Retorna todos os registros da tabela da esquerda e os registros correspondentes da tabela da direita.
+- ``RIGHT (OUTER) JOIN``: Retorna todos os registros da tabela da direita e os registros correspondentes da tabela da esquerda.
+- ``FULL (OUTER) JOIN``: Retorna todos os registros quando há uma correspondência na tabela esquerda ou direita.
+
+---
+
+## SQL Inner Join
+
 
 
 

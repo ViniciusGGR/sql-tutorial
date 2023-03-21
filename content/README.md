@@ -1691,3 +1691,51 @@ A nova tabela será criada com os nomes e tipos de coluna definidos na tabela an
 
 ## SQL Insert Into Select
 
+A instrução ``INSERT INTO SELECT`` copia dados de uma tabela e os insere em outra tabela.
+
+A instrução ``INSERT INTO SELECT`` requer que os tipos de dados nas tabelas de origem e destino correspondam.
+
+> **Observação**: Os _registros existentes na tabela de destino não são afetados_.
+
+**Sintaxe INSERT INTO SELECT:**
+
+- Copie todas as colunas de uma tabela para outra tabela:
+    ```
+    INSERT INTO table2
+    SELECT * FROM table1
+    WHERE condition;
+    ```
+
+- Copie apenas algumas colunas de uma tabela para outra tabela:
+    ```
+    INSERT INTO table2 (column1, column2, column3, ...)
+    SELECT column1, column2, column3, ...
+    FROM table1
+    WHERE condition;
+    ```
+
+### Exemplos SQL INSERT INTO SELECT:
+
+- A instrução SQL a seguir copia "Suppliers" em "Customers" (as colunas que não forem preechidas com dados conterão **NULL**):
+    ```
+    INSERT INTO Customers (CustomerName, City, Country)
+    SELECT SupplierName, City, Country FROM Suppliers;
+    ```
+
+- A instrução SQL a seguir copia "Suppliers" para "Customers" (preencha todas as colunas):
+    ```
+    INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+    SELECT SupplierName, ContactName, Address, City, PostalCode, Country FROM Suppliers;
+    ```
+
+- A instrução SQL a seguir copia apenas os fornecedores alemães em "Customers":
+    ```
+    INSERT INTO Customers (CustomerName, City, Country)
+    SELECT SupplierName, City, Country FROM Suppliers
+    WHERE Country='Germany';
+    ```
+
+---
+
+## SQL Case
+

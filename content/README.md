@@ -1623,3 +1623,71 @@ WHERE column_name operator ALL (SELECT column_name FROM table_name WHERE conditi
 
 ## SQL Select Into
 
+A instrução ``SELECT INTO`` copia dados de uma tabela para uma nova tabela.
+
+**Sintaxe SELECT INTO:**
+
+- Copie todas as colunas para uma nova tabela:
+    ```
+    SELECT *
+    INTO newtable [IN externaldb]
+    FROM oldtable
+    WHERE condition;
+    ```
+
+- Copie apenas algumas colunas para uma nova tabela:
+    ```
+    SELECT column1, column2, column3, ...
+    INTO newtable [IN externaldb]
+    FROM oldtable
+    WHERE condition;
+    ```
+
+A nova tabela será criada com os nomes e tipos de coluna definidos na tabela antiga. É possível criar novos nomes de coluna usando a cláusula ``AS``.
+
+### Exemplos SQL SELECT INTO:
+
+- A instrução SQL a seguir cria uma cópia de backup de "Customers":
+    ```
+    SELECT * INTO CustomersBackup2017
+    FROM Customers;
+    ```
+
+- A instrução SQL a seguir usa a cláusula ``IN`` para copiar a tabela em uma nova tabela em outro banco de dados:
+    ```
+    SELECT * INTO CustomersBackup2017 IN 'Backup.mdb'
+    FROM Customers;
+    ```
+
+- A instrução SQL a seguir copia apenas algumas colunas em uma nova tabela:
+    ```
+    SELECT CustomerName, ContactName INTO CustomersBackup2017
+    FROM Customers;
+    ```
+
+- A instrução SQL a seguir copia apenas os clientes alemães em uma nova tabela:
+    ```
+    SELECT * INTO CustomersGermany
+    FROM Customers
+    WHERE Country = 'Germany';
+    ```
+
+- A instrução SQL a seguir copia dados de mais de uma tabela para uma nova tabela:
+    ```
+    SELECT Customers.CustomerName, Orders.OrderID
+    INTO CustomersOrderBackup2017
+    FROM Customers
+    LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+    ```
+
+> **Dica**: ``SELECT INTO`` também pode ser usado para criar uma nova tabela vazia usando o esquema de outra. Basta adicionar uma cláusula ``WHERE`` que faz com que a consulta não retorne nenhum dado:
+    ```
+    SELECT * INTO newtable
+    FROM oldtable
+    WHERE 1 = 0;
+    ```
+
+---
+
+## SQL Insert Into Select
+

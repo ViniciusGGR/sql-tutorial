@@ -1856,4 +1856,76 @@ FROM Products;
 
 ## SQL Stored Procedures
 
+Um _Stored Procedure_ (Procedimento Armazenado) é um código SQL preparado que pode ser salvo, para que o código possa ser reutilizado continuamente.
+
+Portanto, se tiver uma consulta SQL que escreve repetidamente, salve-a como um _Stored Procedure_ e, em seguida, chame-a para executá-la.
+
+Também é possível passa parâmetros para um _Stored Procedure_, para que o _Stored Procedure_ possa agir com base no(s) valor(es) do(s) parâmetro(s) passado(s).
+
+**Sintaxe Stored Procedure:**
+
+```
+CREATE PROCEDURE procedure_name
+AS
+sql_statement
+GO;
+```
+
+**Executar um Stored Procedure:**
+
+```
+EXEC procedure_name;
+```
+
+### Exemplo Stored Procedure:
+
+- A instrução SQL a seguir cria um _Stored Procedure_ denominado "SelectAllCustomers" que seleciona todos os registros da tabela "Customers":
+    ```
+    CREATE PROCEDURE SelectAllCustomers
+    AS
+    SELECT * FROM Customers
+    GO;
+    ```
+
+- Executando o _Stored Procedure_ acima da seguinte maneira:
+    ```
+    EXEC SelectAllCustomers;
+    ```
+
+### Stored Procedure com um parâmetro:
+
+- A instrução SQL a seguir cria um _Stored Procedure_ que seleciona Clientes de uma _cidade_ específica da tabela "Customers":
+    ```
+    CREATE PROCEDURE SelectAllCustomers @City nvarchar(30)
+    AS
+    SELECT * FROM Customers WHERE City = @City
+    GO;
+    ```
+
+- Executando o _Stored Procedure_ acima da seguinte maneira:
+    ```
+    EXEC SelectAllCustomers @City = 'London';
+    ```
+
+### Stored Procedure com vários parâmetros:
+
+- Configurar vários parâmetros é muito fácil. Basta listar cada parâmetro e o tipo de dados separados por vírgula conforme mostrado abaixo.
+
+- A instrução SQL a seguir cria um _Stored Procedure_ que seleciona Clientes de uma determinada _cidade_ com um "PostalCode" específico da tabela "Customers":
+    ```
+    CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+    AS
+    SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
+    GO;
+    ```
+
+- Executando o _Stored Procedure_ acima da seguinte maneira:
+    ```
+    EXEC SelectAllCustomers @City = 'London', @PostalCode = 'WA1 1DP';
+    ```
+
+---
+
+## SQL Comments
+
 

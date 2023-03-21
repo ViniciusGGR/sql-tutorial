@@ -1312,3 +1312,91 @@ _T1_ e _T2_ são **aliases** de tabela diferentes para a mesma tabela.
 
 ## SQL Union
 
+O operador ``UNION`` é usado para combinar o conjunto de resultados de duas ou mais instruções ``SELECT``.
+- Cada instrução ``SELECT`` dentro de ``UNION`` deve ter o mesmo número de colunas.
+- As colunas também devem ter tipos de dados semelhantes.
+- As colunas em cada instrução ``SELECT`` também devem estar na mesma ordem.
+
+**Sintaxe UNION:**
+
+```
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+```
+
+**Sintaxe UNION ALL:**
+
+O operador ``UNION`` seleciona apenas valores distintos por padrão. Para permitir valores duplicados, use ``UNION ALL``:
+
+```
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+```
+
+> **Observação**: Os nomes das colunas no conjunto de resultados geralmente são iguais aos nomes das colunas na primeira instrução ``SELECT``.
+
+### Exemplo SQL UNION:
+
+- A instrução SQL a seguir retorna as cidades (_somente valores distintos_) das tabelas "Customers" e "Suppliers":
+    ```
+    SELECT City FROM Customers
+    UNION
+    SELECT City FROM Suppliers
+    ORDER BY City;
+    ```
+
+    > **Observação**: Caso alguns clientes ou fornecedores tenham a mesma cidade, cada cidade será listada apenas uma vez, pois ``UNION`` seleciona apenas valores distintos. Use ``UNION ALL`` também para selecionar valores duplicados!
+
+### Exemplo SQL UNION ALL:
+
+- A instrução SQL a seguir retorna as cidades (_valores duplicados também_) das tabelas "Customers" e "Suppliers":
+    ```
+    SELECT City FROM Customers
+    UNION ALL
+    SELECT City FROM Suppliers
+    ORDER BY City;
+    ```
+
+### SQL UNION com WHERE:
+
+- A instrução SQL a seguir retorna as cidades alemãs (_somente valores distintos_) das tabelas "Customers" e "Suppliers":
+    ```
+    SELECT City, Country FROM Customers
+    WHERE Country='Germany'
+    UNION
+    SELECT City, Country FROM Suppliers
+    WHERE Country='Germany'
+    ORDER BY City;
+    ```
+
+### SQL UNION ALL com WHERE:
+
+- A instrução SQL a seguir retorna as cidades alemãs (_valores duplicados também_) das tabelas "Customers" e "Suppliers":
+    ```
+    SELECT City, Country FROM Customers
+    WHERE Country='Germany'
+    UNION ALL
+    SELECT City, Country FROM Suppliers
+    WHERE Country='Germany'
+    ORDER BY City;
+    ```
+
+### Outro exemplo UNION:
+
+- A instrução SQL a seguir lista todos os clientes e fornecedores:
+    ```
+    SELECT 'Customer' AS Type, ContactName, City, Country
+    FROM Customers
+    UNION
+    SELECT 'Supplier', ContactName, City, Country
+    FROM Suppliers;
+    ```
+
+    > **Observação**: O tipo ``AS`` acima é um **alias**. _SQL Aliases_ são usados para dar um nome temporário a uma tabela ou coluna. Um **alias** só existe durante a consulta. Portanto, nesse exemplo foi _criada uma coluna temporária chamada_ **"Type"**, que lista se a pessoa de contato é um "Customer" ou um "Supplier".
+
+---
+
+## SQL Group By
+

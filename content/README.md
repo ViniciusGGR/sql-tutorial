@@ -1443,3 +1443,60 @@ ORDER BY column_name(s);
 ---
 
 ## SQL Having
+
+A cláusula ``HAVING`` foi adicionada ao SQL porque a palavra-chave ``WHERE`` não pode ser usada com funções agregadas.
+
+**Sintaxe HAVING:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+```
+
+### Exemplos SQL HAVING:
+
+- A instrução SQL a seguir lista o número de clientes em cada país. Inclui apenas países com mais de 5 clientes:
+    ```
+    SELECT COUNT(CustomerID), Country
+    FROM Customers
+    GROUP BY Country
+    HAVING COUNT(CustomerID) > 5;
+    ```
+
+- A instrução SQL a seguir lista o número de clientes em cada país, classificados de cima para baixo. Inclui apenas países com mais de 5 clientes:
+    ```
+    SELECT COUNT(CustomerID), Country
+    FROM Customers
+    GROUP BY Country
+    HAVING COUNT(CustomerID) > 5
+    ORDER BY COUNT(CustomerID) DESC;
+    ```
+
+### Mais exemplos de HAVING:
+
+- A instrução SQL a seguir lista os funcionários que registraram mais de 10 pedidos:
+    ```
+    SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+    FROM (Orders
+    INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID)
+    GROUP BY LastName
+    HAVING COUNT(Orders.OrderID) > 10;
+    ```
+
+- A instrução SQL a seguir lista se os funcionários "Davolio" ou "Fuller" registraram mais de 25 pedidos:
+    ```
+    SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+    FROM Orders
+    INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+    WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+    GROUP BY LastName
+    HAVING COUNT(Orders.OrderID) > 25;
+    ```
+
+---
+
+## SQL Exists

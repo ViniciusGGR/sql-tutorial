@@ -123,5 +123,7 @@ Curso completo sobre SQL do site W3Schools - [**Link - Tutorial SQL**](https://w
     - [Stored Procedure Example](./content/README.md/#exemplo-stored-procedure)
     - [Stored Procedure With One Parameter](./content/README.md/#stored-procedure-com-um-parâmetro)
     - [Stored Procedure With Multiple Parameters](./content/README.md/#stored-procedure-com-vários-parâmetros)
-- [SQL Comments]()
+- [SQL Comments](./content/README.md/#sql-comments)
+    - [Single Line Comments](./content/README.md/#comentários-de-linha-única)
+    - [Multi-line Comments](./content/README.md/#comentários-de-várias-linhas)
 - [SQL Operators]()

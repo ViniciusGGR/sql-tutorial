@@ -1928,4 +1928,74 @@ EXEC procedure_name;
 
 ## SQL Comments
 
+Os comentários são usados para explicar seções de instruções SQL ou para impedir a execução de instruções SQL.
+
+### Comentários de linha única:
+
+Os comentários de linha única começam com **``--``**.
+
+Qualquer texto que comece com ``--`` o final da linha será ignorado (não será executado).
+
+- O exemplo a seguir usa um comentário de uma única linha como explicação:
+    ```
+    --Seleciona tudo:
+    SELECT * FROM Customers;
+    ```
+
+- O exemplo a seguir usa um comentário de linha única para ignorar o final de uma linha:
+    ```
+    SELECT * FROM Customers -- WHERE City='Berlin';
+    ```
+
+- O exemplo a seguir usa um comentário de uma única linha para ignorar uma instrução:
+    ```
+    --SELECT * FROM Customers;
+    SELECT * FROM Products;
+    ```
+
+### Comentários de várias linhas:
+
+Os comentários de várias linhas começam com **``/*``** e terminam com **``*/``**.
+
+Qualquer texto entre ``/*`` e ``*/`` será ignorado (não será executado).
+
+- O exemplo a seguir usa um comentário de várias linhas como explicação:
+    ```
+    /*Selecione todas as colunas
+    de todos os registros
+    na tabela Customers:*/
+
+    SELECT * FROM Customers;
+    ```
+
+- O exemplo a seguir usa um comentário de várias linhas para ignorar muitas instruções:
+    ```
+    /*SELECT * FROM Customers;
+    SELECT * FROM Products;
+    SELECT * FROM Orders;
+    SELECT * FROM Categories;*/
+    
+    SELECT * FROM Suppliers;
+    ```
+
+Para ignorar apenas uma parte de uma instrução, use também o comentário ``/* */``.
+
+- O exemplo a seguir usa um comentário para ignorar parte de uma linha:
+    ```
+    SELECT CustomerName, /*City,*/ Country FROM Customers;
+    ```
+
+- O exemplo a seguir usa um comentário para ignorar parte de uma instrução:
+    ```
+    SELECT * FROM Customers WHERE (CustomerName LIKE 'L%'
+    OR CustomerName LIKE 'R%' /*OR CustomerName LIKE 'S%'
+    OR CustomerName LIKE 'T%'*/ OR CustomerName LIKE 'W%')
+    AND Country='USA'
+    ORDER BY CustomerName;
+    ```
+
+---
+
+## SQL Operators
+
 

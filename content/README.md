@@ -1998,4 +1998,61 @@ Para ignorar apenas uma parte de uma instrução, use também o comentário ``/*
 
 ## SQL Operators
 
+### Operadores Aritméticos SQL:
 
+| Operador | Descrição     |
+| -------- | ------------- |
+| +        | Adição        |
+| -        | Subtração     |
+| *        | Multiplicação |
+| /        | Divisão       |
+| %        | Módulo        |
+
+### Operadores bit a bit do SQL:
+
+| Operador | Descrição              |
+| -------- | ---------------------- |
+| &        | bit a bit AND          |
+| !        | bit a bit OR           |
+| ^        | bit a bit exclusivo OR |
+
+### Operadores de Comparação SQL:
+
+| Operador | Descrição        |
+| -------- | ---------------- |
+| =        | Igual a          |
+| >        | Maior que        |
+| <        | Menor que        |
+| >=       | Maior ou igual a |
+| <=       | Menor ou igual a |
+| <>       | Diferente de     |
+
+### Operadores Compostos SQL:
+
+| Operador | Descrição                 |
+| -------- | ------------------------- |
+| +=       | Adicionar igual           |
+| -=       | Subtrair igual            |
+| *=       | Multiplicar igual         |
+| /=       | Dividir igual             |
+| %=       | Módulo igual              |
+| &=       | bit a bit AND igual       |
+| ^-=      | bit a bit exclusivo igual |
+| !*=      | bit a bit OR igual        |
+
+### Operadores Lógicos SQL:
+
+| Operador | Descrição                                                     |
+| -------- | ------------------------------------------------------------- |
+| ALL      | TRUE se todos os valores da subconsulta atenderem à condição  |
+| AND      | TRUE se todas as condições separadas por AND forem TRUE       |
+| ANY      | TRUE se algum dos valores da subconsulta atender à condição   |
+| BETWEEN  | TRUE se o operando estiver dentro do intervalo de comparações |
+| EXISTS   | TRUE se a subconsulta retornar um ou mais registros           |
+| IN       | TRUE se o operando for igual a um de uma lista de expressões  |
+| LIKE     | TRUE se o operando corresponder a um padrão                   |
+| NOT      | Exibe um registro se a(s) condição(ões) NÃO FOR(EM) TRUE      |
+| OR       | TRUE se alguma das condições separadas por OR for TRUE        |
+| SOME     | TRUE se algum dos valores da subconsulta atender à condição   |
+
+---

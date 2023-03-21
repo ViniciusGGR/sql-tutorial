@@ -1533,3 +1533,93 @@ WHERE EXISTS (SELECT column_name FROM table_name WHERE condition);
 
 ## SQL Any, All
 
+Os operadores ``ANY`` e ``ALL`` permitem realizar uma comparação entre um único valor de coluna e um intervalo de outros valores.
+
+### O operador SQL ANY:
+
+O operador ``ANY``:
+- Retorna um valor booleano como resultado.
+- Retorna **TRUE** se **QUALQUER** um dos valores da subconsulta atender à condição.
+
+``ANY`` significa que a condição será verdadeira se a operação for verdadeira para qualquer um dos valores no intervalo.
+
+**Sintaxe ANY:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY (SELECT column_name FROM table_name WHERE condition);
+```
+
+> **Observação**: O _operador_ deve ser um operador de comparação padrão (=, <>, !=, >, >=, < ou <=).
+
+### O operador SQL ALL:
+
+O operador ``ALL``:
+- Retorna um valor booleano como resultado.
+- Retorna **TRUE** se **TODOS** os valores da subconsulta atenderem à condição.
+- É usado com declarações ``SELECT``, ``WHERE`` e ``HAVING``.
+
+``ALL`` significa que a condição será verdadeira somente se a operação for verdadeira para todos os valores no intervalo.
+
+**Sintaxe ALL com SELECT:**
+
+```
+SELECT ALL column_name(s)
+FROM table_name
+WHERE condition;
+```
+
+**Sintaxe ALL com WHERE ou HAVING:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL (SELECT column_name FROM table_name WHERE condition);
+```
+
+> **Observação**: O _operador_ deve ser um operador de comparação padrão (=, <>, !=, >, >=, < ou <=).
+
+### Exemplos SQL ANY:
+
+- A instrução SQL a seguir lista o "ProductName" se ele encontrar **QUALQUER** registro na tabela "OrderDetails" com _Quantidade_ igual a 10 (isso retornará **TRUE** porque a coluna _Quantity_ tem alguns valores de 10):
+    ```
+    SELECT ProductName
+    FROM Products
+    WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);
+    ```
+
+- A instrução SQL a seguir lista o "ProductName" se encontrar **QUALQUER** registro na tabela "OrderDetails" com _Quantidade_ maior que 99 (isso retornará **TRUE** porque a coluna _Quantity_ tem alguns valores maiores que 99):
+    ```
+    SELECT ProductName
+    FROM Products
+    WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity > 99);
+    ```
+
+- A instrução SQL a seguir lista o "ProductName" se encontrar **QUALQUER** registro na tabela "OrderDetails" com _Quantidade_ maior que 1.000 (isso retornará **FALSE** porque a coluna _Quantity_ não tem valores maiores que 1.000):
+    ```
+    SELECT ProductName
+    FROM Products
+    WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity > 1000);
+    ```
+
+### Exemplos SQL ALL:
+
+- A instrução SQL a seguir lista **TODOS** os nomes de produtos:
+    ```
+    SELECT ALL ProductName
+    FROM Products
+    WHERE TRUE;
+    ```
+
+- A instrução SQL a seguir lista o "ProductName" se **TODOS** os registros na tabela "OrderDetails" tiverem _Quantidade_ igual a 10. Isso obviamente retornará **FALSE** porque a coluna _Quantity_ tem muitos valores diferentes (não apenas o valor de 10):
+    ```
+    SELECT ProductName
+    FROM Products
+    WHERE ProductID = ALL (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);
+    ```
+
+---
+
+## SQL Select Into
+

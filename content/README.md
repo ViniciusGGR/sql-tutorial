@@ -1400,3 +1400,46 @@ SELECT column_name(s) FROM table2;
 
 ## SQL Group By
 
+A instrução ``GROUP BY`` agrupa linhas que têm os mesmos valores em linhas de resumo, como "encontre o número de clientes em cada país".
+
+A instrução ``GROUP BY`` geralmente é usada com funções de agregação (``COUNT()``, ``MAX()``, ``MIN()``, ``SUM()``, ``AVG()``) para agrupar o conjunto de resultados em uma ou mais colunas.
+
+**Sintaxe GROUP BY:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s);
+```
+
+### Exemplos SQL GROUP BY:
+
+- A instrução SQL a seguir lista o número de clientes em cada país:
+    ```
+    SELECT COUNT(CustomerID), Country
+    FROM Customers
+    GROUP BY Country;
+    ```
+
+- A instrução SQL a seguir lista o número de clientes em cada país, classificados de cima para baixo:
+    ```
+    SELECT COUNT(CustomerID), Country
+    FROM Customers
+    GROUP BY Country
+    ORDER BY COUNT(CustomerID) DESC;
+    ```
+
+### Exemplo GROUP BY com JOIN:
+
+- A instrução SQL a seguir lista o número de pedidos enviados por cada remetente:
+    ```
+    SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+    LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+    GROUP BY ShipperName;
+    ```
+
+---
+
+## SQL Having

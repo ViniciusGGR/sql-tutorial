@@ -1781,4 +1781,79 @@ CASE
 
 ## SQL Null Functions
 
+### Funções SQL IFNULL(), ISNULL(), COALESCE() e NVL():
+
+- Tabela "Products":
+
+| P_Id | ProductName | UnitPrice | UnitsInStock | UnitsOnOrder |
+| ---- | ----------- | --------- | ------------ | ------------ |
+| 1    | Jarlsberg   | 10.45     | 16           | 15           |
+| 2    | Mascarpone  | 32.56     | 23           |              |
+| 3    | Gorgonzola  | 15.67     | 9            | 20           |
+
+Supondo que a coluna "UnitsOnOrder" seja opcional e possa conter valores **NULL**.
+
+```
+SELECT ProductName, UnitPrice * (UnitsInStock + UnitsOnOrder)
+FROM Products;
+```
+
+> No exemplo acima, se algum dos valores "UnitsOnOrder" for **NULL**, o resultado será **NULL**.
+
+### Soluções:
+
+**MySQL**
+
+- A função MySQL ``IFNULL()`` permite o retorno de um valor alternativo se uma expressão for **NULL**:
+    ```
+    SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+    FROM Products;
+    ```
+
+- Ou pode ser utilizada a função ``COALESCE()``:
+    ```
+    SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+    FROM Products;
+    ```
+
+**SQL Server**
+
+- A função SQL Server ``ISNULL()`` permite retornar um valor alternativo quando uma expressão é **NULL**:
+    ```
+    SELECT ProductName, UnitPrice * (UnitsInStock + ISNULL(UnitsOnOrder, 0))
+    FROM Products;
+    ```
+
+- Ou pode ser utilizada a função ``COALESCE()``:
+    ```
+    SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+    FROM Products;
+    ```
+
+**MS Access**
+
+- A função do MS Access ``IsNull()`` retorna **TRUE** (-1) se a expressão for um valor nulo, caso contrário, **FALSE** (0):
+    ```
+    SELECT ProductName, UnitPrice * (UnitsInStock + IIF(IsNull(UnitsOnOrder), 0, UnitsOnOrder))
+    FROM Products;
+    ```
+
+**Oracle**
+
+- A função Oracle ``NVL()`` alcança o mesmo resultado:
+    ```
+    SELECT ProductName, UnitPrice * (UnitsInStock + NVL(UnitsOnOrder, 0))
+    FROM Products;
+    ```
+
+- Ou pode ser utilizada a função ``COALESCE()``:
+    ```
+    SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+    FROM Products;
+    ```
+
+---
+
+## SQL Stored Procedures
+
 

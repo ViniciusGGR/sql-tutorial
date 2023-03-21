@@ -139,8 +139,9 @@ Curso completo sobre SQL do site W3Schools - [**Link - Tutorial SQL**](https://w
 
 - [SQL Create DB](./content/database/README.md/#sql-create-db)
     - [CREATE DATABASE Example](./content/database/README.md/#exemplo-create-database)
-- [SQL Drop DB]()
-- [SQL Backup DB]()
+- [SQL Drop DB](./content/database/README.md/#sql-drop-db)
+    - [DROP DATABASE Example](./content/database/README.md/#exemplo-drop-database)
+- [SQL Backup DB](./content/database/README.md/#sql-backup-db)
 - [SQL Create Table]()
 - [SQL Drop Table]()
 - [SQL Alter Table]()

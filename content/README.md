@@ -1739,3 +1739,46 @@ A instrução ``INSERT INTO SELECT`` requer que os tipos de dados nas tabelas de
 
 ## SQL Case
 
+A expressão ``CASE`` passa por condições e retorna um valor quando a primeira condição é atendida (como uma instrução if-then-else). Assim, quando uma condição for _verdadeira_, ele irá parar de ler e retornar o resultado. Se nenhuma condição for _verdadeira_, ele retorna o valor na cláusula ``ELSE``.
+
+Se não houver ``ELSE`` e nenhuma condição for _verdadeira_, ele retornará **NULL**.
+
+**Sintaxe CASE:**
+
+```
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+```
+
+### Exemplos SQL CASE:
+
+- O seguinte SQL passa por condições e retorna um valor quando a primeira condição é atendida:
+    ```
+    SELECT OrderID, Quantity,
+    CASE
+        WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+        WHEN Quantity = 30 THEN 'The quantity is 30'
+        ELSE 'The quantity is under 30'
+    END AS QuantityText
+    FROM OrderDetails;
+    ```
+
+- O SQL a seguir ordenará os clientes por cidade. No entanto, se a cidade for **NULL**, ordene por país:
+    ```
+    SELECT CustomerName, City, Country
+    FROM Customers
+    ORDER BY
+    (CASE
+        WHEN City IS NULL THEN Country
+        ELSE City
+    END);
+    ```
+
+---
+
+## SQL Null Functions
+
+

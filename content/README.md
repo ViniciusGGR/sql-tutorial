@@ -1500,3 +1500,36 @@ ORDER BY column_name(s);
 ---
 
 ## SQL Exists
+
+O operador ``EXISTS`` é usado para testar a existência de qualquer registro em uma subconsulta.
+
+O operador ``EXISTS`` retorna **TRUE** se a subconsulta retornar um ou mais registros.
+
+**Sintaxe EXISTS:**
+
+```
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS (SELECT column_name FROM table_name WHERE condition);
+```
+
+### Exemplos SQL EXISTS:
+
+- A instrução SQL a seguir retorna **TRUE** e lista os fornecedores com preço de produto inferior a 20:
+    ```
+    SELECT SupplierName
+    FROM Suppliers
+    WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.SupplierID AND Price < 20);
+    ```
+
+- A instrução SQL a seguir retorna **TRUE** e lista os fornecedores com preço de produto igual a 22:
+    ```
+    SELECT SupplierName
+    FROM Suppliers
+    WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.SupplierID AND Price = 22);
+    ```
+
+---
+
+## SQL Any, All
+

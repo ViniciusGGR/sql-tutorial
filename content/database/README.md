@@ -157,3 +157,34 @@ CREATE TABLE new_table AS
 
 ## SQL Drop Table
 
+A instrução ``DROP TABLE`` é usada para descartar uma tabela existente em um banco de dados.
+
+**Sintaxe:**
+
+```
+DROP TABLE table_name;
+```
+
+> **Nota**: Cuidado antes de deletar uma tabela. Excluir uma tabela resultará na perda de informações completas armazenadas na tabela.
+
+### Exemplo SQL DROP TABLE:
+
+- A seguinte instrução SQL _remove_ a tabela existente "Shippers":
+    ```
+    DROP TABLE Shippers;
+    ```
+
+### SQL TRUNCATE TABLE:
+
+A instrução ``TRUNCATE TABLE`` é usada para excluir os dados dentro de uma tabela, mas não a própria tabela.
+
+**Sintaxe:**
+
+```
+TRUNCATE TABLE table_name;
+```
+
+---
+
+## SQL Alter Table
+

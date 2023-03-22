@@ -94,3 +94,66 @@ WITH DIFFERENTIAL
 
 ## SQL Create Table
 
+A instrução ``CREATE TABLE`` é usada para criar uma nova tabela em um banco de dados.
+
+**Sintaxe:**
+
+```
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+    ...
+);
+```
+
+Os parâmetros _column_ especificam os nomes das colunas da tabela.
+
+O parâmetro _datatype_ especifica o **tipo de dados** que a coluna pode conter (por exemplo: varchar, integer, date, etc.).
+
+### Exemplo SQL CREATE TABLE:
+
+- O exemplo a seguir cria uma tabela chamada "Persons" que contém cinco colunas: "PersonID", "LastName", "FirstName", "Address" e "City":
+    ```
+    CREATE TABLE Persons (
+        PersonID int,
+        LastName varchar(255),
+        FirstName varchar(255),
+        Address varchar(255),
+        City varchar(255)
+    );
+    ```
+
+    - A coluna "PersonID" é do tipo **int** e conterá um número inteiro.
+    - As colunas "LastName", "FirstName", "Address" e "City" são do tipo **varchar** e conterão caracteres, e o comprimento máximo para esses campos é de 255 caracteres.
+
+    > **Dica**: A tabela "Persons" vazia agora pode ser preenchida com dados com a instrução SQL ``INSERT INTO``.
+
+### Criar tabela usando outra tabela:
+
+Uma cópia de uma tabela existente também pode ser criada usando ``CREATE TABLE``.
+
+A nova tabela obtém as mesmas definições de coluna. Todas as colunas ou colunas específicas podem ser selecionadas.
+
+Se criada uma nova tabela usando uma tabela existente, a nova tabela será preenchida com os valores existentes da tabela antiga.
+
+**Sintaxe:**
+
+```
+CREATE TABLE new_table AS
+    SELECT column1, column2, ...
+    FROM existing_table_name
+    WHERE ...;
+```
+
+- O SQL a seguir cria uma nova tabela chamada "TestTable" (que é uma cópia da tabela "Customers"):
+    ```
+    CREATE TABLE TestTable AS
+    SELECT CustomerName, ContactName
+    FROM Customers;
+    ```
+
+---
+
+## SQL Drop Table
+

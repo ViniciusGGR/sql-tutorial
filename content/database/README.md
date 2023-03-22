@@ -48,3 +48,49 @@ DROP DATABASE databasename;
 
 ## SQL Backup DB
 
+A instrução ``BACKUP DATABASE`` é usada no SQL Server para criar um backup completo de um banco de dados SQL existente.
+
+**Sintaxe:**
+
+```
+BACKUP DATABASE databasename
+TO DISK = 'filepath';
+```
+
+### A instrução SQL BACKUP WITH DIFFERENTIAL:
+
+- Um _backup diferencial_ faz backup apenas das partes do banco de dados que foram alteradas desde o último backup completo do banco de dados.
+
+**Sintaxe:**
+
+```
+BACKUP DATABASE databasename
+TO DISK = 'filepath'
+WITH DIFFERENTIAL
+```
+
+### Exemplo BACKUP DATABASE:
+
+- A instrução SQL a seguir cria um backup completo do banco de dados existente "**testDB**" para o disco D:
+    ```
+    BACKUP DATABASE testDB
+    TO DISK = 'D:\backups\testDB.bak';
+    ```
+
+> **Dica**: Sempre faça backup do banco de dados em uma unidade diferente do banco de dados real. Assim, se ocorrer uma falha no disco, não perderá o arquivo de backup junto com o banco de dados.
+
+### Exemplo BACKUP WITH DIFFERENTIAL:
+
+- A instrução SQL a seguir cria um _backup diferencial_ do banco de dados "**testDB**":
+    ```
+    BACKUP DATABASE testDB
+    TO DISK = 'D:\backups\testDB.bak'
+    WITH DIFFERENTIAL;
+    ```
+
+> **Dica**: Um _backup diferencial_ reduz o tempo de backup (já que apenas as alterações são copiadas).
+
+---
+
+## SQL Create Table
+

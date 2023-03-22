@@ -302,4 +302,42 @@ Para alterar o tipo de dados de uma coluna em uma tabela, basta utilizar a segui
 
 ## SQL Constraints
 
+As _constraints_ (restrições) SQL são usadas para especificar regras para dados em uma tabela.
+
+### SQL Create Constraints:
+
+As _constraints_ (restrições) podem ser especificadas quando a tabela é criada com a instrução ``CREATE TABLE`` ou depois que a tabela é criada com a instrução ``ALTER TABLE``.
+
+**Sintaxe:**
+
+```
+CREATE TABLE table_name (
+    column1 datatype constraint,
+    column2 datatype constraint,
+    column3 datatype constraint,
+    ...
+);
+```
+
+### SQL Constraints:
+
+As _constraints_ (restrições) são usadas para especificar regras para os dados em uma tabela.
+
+As _constraints_ (restrições) são usadas para limitar o tipo de dados que podem entrar em uma tabela. Isso garante a precisão e a confiabilidade dos dados na tabela. Se houver alguma violação entre a restrição e a ação de dados, a ação será abortada.
+
+As _constraints_ (restrições) podem ser **nível de coluna** ou **nível de tabela**. As restrições de nível de coluna se aplicam a uma coluna e as restrições de nível de tabela se aplicam a toda a tabela.
+
+- As _constraints_ (restrições) que são comumente usadas em SQL:
+    - ``NOT NULL`` - Garante que uma coluna não pode ter um valor **NULL**.
+    - ``UNIQUE`` - Garante que todos os valores em uma coluna sejam diferentes.
+    - ``PRIMARY KEY`` - Uma combinação de ``NOT NULL`` e ``UNIQUE``. Identifica exclusivamente cada linha em uma tabela.
+    - ``FOREIGN KEY`` - Impede ações que destruiriam links entre tabelas.
+    - ``CHECK`` - Garante que os valores em uma coluna satisfaçam uma condição específica.
+    - ``DEFAULT`` - Define um valor padrão para uma coluna se nenhum valor for especificado.
+    - ``CREATE INDEX`` - Usado para criar e recuperar dados do banco de dados muito rapidamente.
+
+---
+
+## SQL Not Null
+
 

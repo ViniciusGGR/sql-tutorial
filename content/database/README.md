@@ -188,3 +188,118 @@ TRUNCATE TABLE table_name;
 
 ## SQL Alter Table
 
+A instrução ``ALTER TABLE`` é usada para adicionar, excluir ou modificar colunas em uma tabela existente.
+
+A instrução ``ALTER TABLE`` também é usada para adicionar e remover várias restrições em uma tabela existente.
+
+### ALTER TABLE - ADD Coluna:
+
+- Para adicionar uma coluna em um tabela, basta utilizar a seguinte sintaxe:
+    ```
+    ALTER TABLE table_name
+    ADD column_name datatype;
+    ```
+
+- O SQL a seguir adiciona uma coluna "Email" à tabela "Customers":
+    ```
+    ALTER TABLE Customers
+    ADD Email varchar(255);
+    ```
+
+### ALTER TABLE - DROP Coluna:
+
+- Para excluir uma coluna em uma tabela, basta utilizar a seguinte sintaxe (alguns sistemas de banco de dados não permitem a exclusão de uma coluna):
+    ```
+    ALTER TABLE table_name
+    DROP COLUMN column_name;
+    ```
+
+- O SQL a seguir exclui a coluna "Email" da tabela "Customers":
+    ```
+    ALTER TABLE Customers
+    DROP COLUMN Email;
+    ```
+
+### ALTER TABLE - RENAME Coluna:
+
+- Para renomear uma coluna em uma tabela, basta utilizar a seguinte sintaxe:
+    ```
+    ALTER TABLE table_name
+    RENAME COLUMN old_name to new_name;
+    ```
+
+### ALTER TABLE - ALTER/MODIFY Tipo de Dados:
+
+Para alterar o tipo de dados de uma coluna em uma tabela, basta utilizar a seguinte sintaxe:
+
+- **SQL Server | MS Access:**
+    ```
+    ALTER TABLE table_name
+    ALTER COLUMN column_name datatype;
+    ```
+
+- **MySQL | Oracle (Versão anterior 10G):**
+    ```
+    ALTER TABLE table_name
+    MODIFY COLUMN column_name datatype;
+    ```
+
+- **Oracle 10G e posterior:**
+    ```
+    ALTER TABLE table_name
+    MODIFY column_name datatype;
+    ```
+
+### Exemplo SQL ALTER TABLE:
+
+- Tabela "Persons":
+
+| ID | LastName  | FirstName | Address      | City      |
+| -- | --------- | --------- | ------------ | --------- |
+| 1  | Hansen    | Ola       | Timoteivn 10 | Sandnes   |
+| 2  | Svendson  | Tove      | Borgvn 23    | Sandnes   |
+| 3  | Pettersen | Kari      | Storgt 20    | Stavanger |
+
+- Adicionando uma coluna chamada "DateOfBirth" na tabela "Persons":
+    ```
+    ALTER TABLE Persons
+    ADD DateOfBirth date;
+    ```
+
+> **Observação**: A nova coluna "_DateOfBirth_" é do tipo **date** (data) e vai conter uma data. O tipo de dados especifica qual o tipo de dados a coluna pode conter.
+
+- Tabela "Persons" com a nova coluna:
+
+| ID | LastName  | FirstName | Address      | City      | DateOfBirth |
+| -- | --------- | --------- | ------------ | --------- | ----------- |
+| 1  | Hansen    | Ola       | Timoteivn 10 | Sandnes   |             |
+| 2  | Svendson  | Tove      | Borgvn 23    | Sandnes   |             |
+| 3  | Pettersen | Kari      | Storgt 20    | Stavanger |             |
+
+- Alterando o tipo de dados da coluna "DateOfBirth" na tabela "Persons":
+    ```
+    ALTER TABLE Persons
+    ALTER COLUMN DateOfBirth year;
+    ```
+
+> **Observação**: A coluna "_DateOfBirth_" agora é do tipo **year** (ano) e conterá um ano em um formato de dois ou quatro dígitos.
+
+- Excluindo a coluna "DateOfBirth" na tabela "Persons":
+    ```
+    ALTER TABLE Persons
+    DROP COLUMN DateOfBirth;
+    ```
+
+- Tabela "Persons" sem a coluna:
+
+| ID | LastName  | FirstName | Address      | City      |
+| -- | --------- | --------- | ------------ | --------- |
+| 1  | Hansen    | Ola       | Timoteivn 10 | Sandnes   |
+| 2  | Svendson  | Tove      | Borgvn 23    | Sandnes   |
+| 3  | Pettersen | Kari      | Storgt 20    | Stavanger |
+
+---
+
+## SQL Constraints
+
+

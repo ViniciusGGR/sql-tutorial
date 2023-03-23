@@ -340,4 +340,49 @@ As _constraints_ (restrições) podem ser **nível de coluna** ou **nível de ta
 
 ## SQL Not Null
 
+Por padrão, uma coluna pode conter valores **NULL**.
+
+A _constraint_ (restrição) ``NOT NULL`` força uma coluna a **NÃO** aceitar valores **NULL**. Isso obriga um campo a sempre conter um valor, o que significa que não é possível inserir um novo registro ou atualizar um registro sem adicionar um valor a esse campo.
+
+### SQL NOT NULL em CREATE TABLE:
+
+- O seguinte SQL garante que as colunas "ID", "LastName" e "FirstName" **NÃO** aceitarão valores **NULL** quando a tabela "Persons" for criada:
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255) NOT NULL,
+        Age int
+    );
+    ```
+
+### SQL NOT NULL em ALTER TABLE:
+
+- Para criar uma _constraint_ (restrição) ``NOT NULL`` na coluna "Age" quando a tabela "Persons" já estiver criada, basta utilizar o seguinte SQL:
+
+**SQL Server | MS Access:**
+
+```
+ALTER TABLE Persons
+ALTER COLUMN Age int NOT NULL;
+```
+
+**MySQL | Oracle (Versão anterior 10G):**
+
+```
+ALTER TABLE Persons
+MODIFY COLUMN Age int NOT NULL;
+```
+
+**Oracle 10G e posterior:**
+
+```
+ALTER TABLE Persons
+MODIFY Age int NOT NULL;
+```
+
+---
+
+## SQL Unique
+
 

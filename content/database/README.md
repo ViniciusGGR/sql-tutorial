@@ -385,4 +385,88 @@ MODIFY Age int NOT NULL;
 
 ## SQL Unique
 
+A _constraint_ (restrição) ``UNIQUE`` garante que todos os valores em uma coluna sejam diferentes.
 
+As _constraints_ (restrições) ``UNIQUE`` e ``PRIMARY KEY`` fornecem uma garantia de exclusividade para uma coluna ou conjunto de colunas.
+
+Uma _constraint_ (restrição) ``PRIMARY KEY`` tem automaticamente uma _constraint_ (restrição) ``UNIQUE``.
+
+No entanto, é possível ter **MUITAS** _constraints_ (restrições) ``UNIQUE`` por tabela, mas apenas **UMA** _constraint_ (restrição) ``PRIMARY KEY`` por tabela.
+
+### SQL UNIQUE Constraint em CREATE TABLE:
+
+O SQL a seguir cria uma _constraint_ (restrição) ``UNIQUE`` na coluna "ID" quando a tabela "Persons" é criada:
+
+**SQL Server | Oracle | MS Access:**
+
+```
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
+**MySQL:**
+
+```
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    UNIQUE (ID)
+);
+```
+
+- Para nomear uma _constraint_ (restrição) ``UNIQUE`` e definir uma _constraint_ (restrição) ``UNIQUE`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int,
+        CONSTRAINT UC_Person UNIQUE (ID, LastName)
+    );
+    ```
+
+### SQL UNIQUE Constraint em ALTER TABLE:
+
+- Para criar uma _constraint_ (restrição) ``UNIQUE`` na coluna "ID" quando a tabela já estiver criada, basta utilizar o seguinte SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    ADD UNIQUE (ID);
+    ```
+
+- Para nomer uma _constraint_ (restrição) ``UNIQUE`` e definir uma _constraint_ (restrição) ``UNIQUE`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    ADD CONSTRAINT UC_Person UNIQUE (ID, LastName);
+    ```
+
+### DROP uma UNIQUE Constraint:
+
+- Para descartar uma _constraint_ (restrição) ``UNIQUE``, basta utilizar o seguinte SQL:  
+
+    **MySQL:**
+    ```
+    ALTER TABLE Persons
+    DROP INDEX UC_Person;
+    ```
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    DROP CONSTRAINT UC_Person;
+    ```
+
+---
+
+## SQL Primary Key

@@ -470,3 +470,91 @@ CREATE TABLE Persons (
 ---
 
 ## SQL Primary Key
+
+A _constraint_ (restrição) ``PRIMARY KEY`` identifica exclusivamente cada registro em uma tabela.
+
+As ``PRIMARY KEY`` devem conter valores ``UNIQUE`` e não podem conter valores **NULL**.
+
+Uma tabela pode ter apenas **UMA** ``PRIMARY KEY``, e na tabela, essa ``PRIMARY KEY`` pode consistir em uma ou várias colunas.
+
+### SQL PRIMARY KEY em CREATE TABLE:
+
+- O seguinte SQL cria um ``PRIMARY KEY`` na coluna "ID" quando a tabela "Persons" é criada:  
+
+    **MySQL:**
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL,
+        LastName varchar(255),
+        FirstName varchar(255),
+        Age int,
+        PRIMARY KEY (ID)
+    );
+    ```
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL PRIMARY KEY,
+        LastName varchar(255),
+        FirstName varchar(255),
+        Age int
+    );
+    ```
+
+- Para permitir a nomeação de uma _constraint_ (restrição) ``PRIMARY KEY`` e para definir uma _constraint_ (restrição) ``PRIMARY KEY`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int,
+        CONSTRAINT PK_Person PRIMARY KEY (ID, LastName)
+    );
+    ```
+
+    > **Observação**: No exemplo acima existe apenas **UMA** ``PRIMARY KEY`` (**PK_Person**). Porém, o **VALOR** da ``PRIMARY KEY`` é formado por **DUAS COLUNAS** (ID + LastName).
+
+### SQL PRIMARY KEY em ALTER TABLE:
+
+- Para criar uma _constraint_ (restrição) ``PRIMARY KEY`` na coluna "ID" quando a tabela já estiver criada, basta utilizar o seguinte SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    ADD PRIMARY KEY (ID);
+    ```
+
+- Para permitir a nomeação de uma _constraint_ (restrição) ``PRIMARY KEY`` e para definir uma _constraint_ (restrição) ``PRIMARY KEY`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    ADD CONSTRAINT PK_Person PRIMARY KEY (ID, LastName);
+    ```
+
+> **Nota**: Se utilizar o ``ALTER TABLE`` para adicionar uma ``PRIMARY KEY``, a(s) coluna(s) de ``PRIMARY KEY`` deve(m) ter sido declarada para não conter valores **NULL** (quando a tabela for criada pela primeira vez).
+
+### DROP a PRIMARY KEY Constraint:
+
+- Para _descartar_ uma _constraint_ (restrição) ``PRIMARY KEY``, basta utilizar o seguinte SQL:  
+
+    **MySQL:**
+    ```
+    ALTER TABLE Persons
+    DROP PRIMARY KEY;
+    ```
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    DROP CONSTRAINT PK_Person;
+    ```
+
+---
+
+## SQL Foreign Key
+
+

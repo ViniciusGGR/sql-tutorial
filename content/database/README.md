@@ -663,3 +663,86 @@ A _constraint_ (restrição) ``FOREIGN KEY`` impede que dados inválidos sejam i
 
 ## SQL Check
 
+A _constraint_ (restrição) ``CHECK`` é usada para limitar o intervalo de valores que pode ser colocado em uma coluna.
+
+- Se definido uma _constraint_ (restrição) ``CHECK`` em uma coluna, ela permitirá apenas determinados valores para esta coluna.
+
+- Se definido uma _constraint_ (restrição) ``CHECK`` em uma tabela, ela poderá limitar os valores em determinadas colunas com base nos valores de outras colunas na linha.
+
+### SQL CHECK em CREATE TABLE:
+
+- O SQL a seguir cria uma _constraint_ (restrição) ``CHECK`` na coluna "Age" quando a tabela _Persons_ é criada. A _constraint_ (restrição) ``CHECK`` garante que idade de uma pessoa deve ser 18 anos ou mais:  
+
+    **MySQL:**
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL,
+        LastName varchar(255),
+        FirstName varchar(255),
+        Age int,
+        CHECK (Age>=18)
+    );
+    ```
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE (
+        ID int NOT NULL,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int CHECK (Age>=18)
+    );
+    ```
+
+- Para permitir a nomeação de uma _constraint_ (restrição) ``CHECK`` e para definir _constraint_ (restrição) ``CHECK`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int,
+        City varchar(255),
+        CONSTRAINT CHK_Person CHECK (Age>=18 AND City='Sandnes')
+    );
+    ```
+
+### SQL CHECK em ALTER TABLE:
+
+- Para criar uma _constraint_ (restrição) ``CHECK`` na coluna "Age" quando a tabela já estiver criada, basta utilizar o seguinte SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    ADD CHECK (Age>=18);
+    ```
+
+- Para permitir a nomeação de uma _constraint_ (restrição) ``CHECK`` e para definir uma _constraint_ (restrição) ``CHECK`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='Sandnes');
+    ```
+
+### DROP a CHECK Constraint:
+
+- Para descartar uma _constraint_ (restrição) ``CHECK``, basta utilizar o seguinte SQL:  
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    DROP CONSTRAINT CHK_PersonAge;
+    ```
+
+    **MySQL:**
+    ```
+    ALTER TABLE Persons
+    DROP CHECK CHK_PersonAge;
+    ```
+
+---
+
+## SQL Default
+

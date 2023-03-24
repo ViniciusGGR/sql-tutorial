@@ -557,4 +557,109 @@ Uma tabela pode ter apenas **UMA** ``PRIMARY KEY``, e na tabela, essa ``PRIMARY 
 
 ## SQL Foreign Key
 
+A _constraint_ (restrição) ``FOREIGN KEY`` é usada para evitar ações que destruam os links entre as tabelas.
+
+A _constraint_ (restrição) ``FOREIGN KEY`` é um campo (ou coleção de campos) em uma tabela, que se refere ao ``PRIMARY KEY`` em outra tabela.
+
+- A tabela com a ``FOREIGN KEY`` é chamada de _tabela filho_, e a tabela com a ``PRIMARY KEY`` é chamada de _tabela referênciada ou pai_.  
+
+    **Tabela "Persons":**
+    | PersonID | LastName  | FirstName | Age |
+    | -------- | --------  | --------- | --- |
+    | 1        | Hansen    | Ola       | 30  |
+    | 2        | Svendson  | Tove      | 23  |
+    | 3        | Pettersen | Kari      | 20  |
+
+    **Tabela "Orders":**
+    | OrderID | OrderNumber | PersonID |
+    | ------- | ----------- | -------- |
+    | 1       | 77895       | 3        |
+    | 2       | 44678       | 3        |
+    | 3       | 22456       | 2        |
+    | 4       | 24562       | 1        |
+
+- A coluna "PersonID" na tabela _Orders_ aponta para a coluna "PersonID" na tabela _Persons_.
+
+- A coluna "PersonID" na tabela _Persons_ é uma coluna ``PRIMARY KEY`` na tabela _Persons_.
+
+- A coluna "PersonID" na tabela _Orders_ é uma coluna ``FOREIGN KEY`` na tabela _Orders_.
+
+A _constraint_ (restrição) ``FOREIGN KEY`` impede que dados inválidos sejam inseridos na coluna ``FOREIGN KEY``, porque deve ser um dos valores contidos na _tabela pai_.
+
+### SQL FOREIGN KEY em CREATE TABLE:
+
+- O seguinte SQL cria uma ``FOREIGN KEY`` na coluna "PersonID" quando a tabela _Orders_ é criada:  
+
+    **MySQL:**
+    ```
+    CREATE TABLE Orders (
+        OrderID int NOT NULL,
+        OrderNumber int NOT NULL,
+        PersonID int,
+        PRIMARY KEY (OrderID),
+        FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+    );
+    ```
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE Orders (
+        OrderID int NOT NULL PRIMARY KEY,
+        OrderNumber int NOT NULL,
+        PersonID int FOREIGN KEY REFERENCES Persons(PersonID)
+    );
+    ```
+
+- Para permitir a nomeação de uma _constraint_ (restrição) ``FOREIGN KEY`` e para definir uma _constraint_ (restrição) ``FOREIGN KEY`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE Orders (
+        OrderID int NOT NULL,
+        OrderNumber int NOT NULL,
+        PersonID int,
+        PRIMARY KEY (OrderID),
+        CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
+        REFERENCES Persons(PersonID)
+    );
+    ```
+
+### SQL FOREIGN KEY em ALTER TABLE:
+
+- Para criar uma _constraint_ (restrição) ``FOREIGN KEY`` na coluna "PersonID" quando a tabela _Orders_ já estiver criada, basta utilizar o seguinte SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Orders
+    ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+    ```
+
+- Para permitir a nomeação de uma _constraint_ (restrição) ``FOREIGN KEY`` e para definir uma _constraint_ (restrição) ``FOREIGN KEY`` em várias colunas, basta utilizar a seguinte sintaxe SQL:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Orders
+    ADD CONSTRAINT FK_PersonOrder
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+    ```
+
+### DROP a FOREIGN KEY Constraint:
+
+- Para descartar uma _constraint_ (restrição) ``FOREIGN KEY``, basta utilizar o seguinte SQL:  
+
+    **MySQL:**
+    ```
+    ALTER TABLE Orders
+    DROP FOREIGN KEY FK_PersonOrder;
+    ```
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Orders
+    DROP CONSTRAINT FK_PersonOrder;
+    ```
+
+---
+
+## SQL Check
 

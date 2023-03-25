@@ -746,3 +746,81 @@ A _constraint_ (restrição) ``CHECK`` é usada para limitar o intervalo de valo
 
 ## SQL Default
 
+A _constraint_ (restrição) ``DEFAULT`` é usada para definir um valor padrão para uma coluna.
+
+O valor padrão será adicionado a todos os novos registros, se nenhum outro valor for especificado.
+
+### SQL DEFAULT em CREATE TABLE:
+
+- O seguinte SQL define um valor ``DEFAULT`` para a coluna "City" quando a tabela "Persons" é criada:  
+
+    **MySQL | SQL Server | Oracle | MS Access:**
+    ```
+    CREATE TABLE Persons (
+        ID int NOT NULL,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int,
+        City varchar(255) DEFAULT 'Sandnes'
+    );
+    ```
+
+- A _constraint_ (restrição) ``DEFAULT`` também pode ser usada para inserir valores do sistema, usando funções como ``GETDATE()``:  
+    ```
+    CREATE TABLE Orders (
+        ID int NOT NULL,
+        OrderNumber int NOT NULL,
+        OrderDate date DEFAULT GETDATE()
+    );
+    ```
+
+### SQL DEFAULT em ALTER TABLE:
+
+- Para criar uma _constraint_ (restrição) ``DEFAULT`` na coluna "City" quando a tabela já estiver criada, basta utilizar o seguinte SQL:  
+
+    **MySQL:**
+    ```
+    ALTER TABLE Persons
+    ALTER City SET DEFAULT 'Sandnes';
+    ```
+
+    **SQL Server:**
+    ```
+    ALTER TABLE Persons
+    ADD CONSTRAINT df_City
+    DEFAULT 'Sandnes' FOR City;
+    ```
+
+    **MS Access:**
+    ```
+    ALTER TABLE Persons
+    ALTER COLUMN City SET DEFAULT 'Sandnes';
+    ```
+
+    **Oracle:**
+    ```
+    ALTER TABLE Persons
+    MODIFY City DEFAULT 'Sandnes';
+    ```
+
+### DROP a DEFAULT Constraint:
+
+- Para descartar uma _constraint_ (restrição) ``DEFAULT``, basta utilizar o seguinte SQL:  
+
+    **MySQL:**
+    ```
+    ALTER TABLE Persons
+    ALTER City DROP DEFAULT;
+    ```
+
+    **SQL Server | Oracle | MS Access:**
+    ```
+    ALTER TABLE Persons
+    ALTER COLUMN City DROP DEFAULT;
+    ```
+
+---
+
+## SQL Index
+
+

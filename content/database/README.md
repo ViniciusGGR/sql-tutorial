@@ -890,4 +890,124 @@ Os índices são usados para recuperar dados do banco de dados mais rapidamente 
 
 ## SQL Auto Increment
 
+O _auto increment_ (incremento automático) permite que um número exclusivo seja gerado automaticamente quando um novo registro é inserido em uma tabela.
+
+Muitas vezes, este é o campo de ``PRIMARY KEY`` que gostaríamos que fosse criado automaticamente toda vez que um novo registro fosse inserido.
+
+### Sintaxe para MySQL:
+
+- A instrução SQL a seguir define a coluna "Personid" como um campo de ``PRIMARY KEY`` de _auto increment_ (incremento automático) na tabela "Persons":  
+    ```
+    CREATE TABLE Persons (
+        Personid int NOT NULL AUTO_INCREMENT,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int,
+        PRIMARY KEY (Personid)
+    );
+    ```
+
+- O MySQL usa a palavra-chave ``AUTO_INCREMENT`` para executar um recurso de incremento automático.
+
+- Por padrão, o valor inicial de ``AUTO_INCREMENT`` é 1 e será incrementado em 1 para cada novo registro.
+
+- Para permitir que a sequência ``AUTO_INCREMENT`` comece com outro valor, basta utilizar a seguinte instrução SQL:  
+    ```
+    ALTER TABLE Persons AUTO_INCREMENT=100;
+    ```
+
+Para inserir um novo registro na tabela "Persons", **NÃO** precisaremos especificar um valor para a coluna "Personid" (um valor único será adicionado automaticamente):  
+
+```
+INSERT INTO Persons (FirstName, LastName)
+VALUES ('Lars', 'Monsen');
+```
+
+- A instrução SQL acima inseriria um novo registro na tabela _Persons_. A coluna "Personid" receberia um valor exclusivo. A coluna "FirstName" seria definida como (Lars) e a coluna "LastName" seria definida como (Monsen).
+
+### Sintaxe para SQL Server:
+
+- A instrução SQL a seguir define a coluna "Personid" como um campo de ``PRIMARY KEY`` de _auto increment_ (incremento automático) na tabela "Persons":  
+    ```
+    CREATE TABLE Persons (
+        Personid int IDENTIFY(1,1) PRIMARY KEY,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int
+    );
+    ```
+
+- O SQL Server usa a palavra-chave ``IDENTIFY`` para executar um recurso de incremento automático.
+
+- No exemplo acima, o valor inicial de ``IDENTIFY`` é 1 e será incrementado em 1 para cada novo registro.
+
+> **Dica**: Para especificar que a coluna "Personid" deve começar no valor 10 e aumentar em 5, altere-a para ``IDENTIFY(10,5)``
+
+Para inserir um novo registro na tabela _Persons_, **NÃO** é preciso especificar um valor para a coluna "Personid" (um valor único será adicionado automaticamente):  
+
+```
+INSERT INTO Persons (FirstName, LastName)
+VALUES ('Lars', 'Monsen');
+```
+
+- A instrução SQL acima inseriria um novo registro na tabela _Persons_. A coluna "Personid" receberia um valor exclusivo. A coluna "FirstName" seria definida como (Lars) e a coluna "LastName" seria definida como (Monsen).
+
+### Sintaxe para MS Access:
+
+- A instrução SQL a seguir define a coluna "Personid" como um campo de ``PRIMARY KEY`` de _auto increment_ (incremento automático) na tabela "Persons":  
+    ```
+    CREATE TABLE Persons (
+        Personid AUTOINCREMENT PRIMARY KEY,
+        LastName varchar(255) NOT NULL,
+        FirstName varchar(255),
+        Age int
+    );
+    ```
+
+- O MS Access usa a palavra-chave ``AUTOINCREMENT`` para executar um recurso de incremento automático.
+
+- Por padrão, o valor inicial do ``AUTOINCREMENT`` é 1 e será incrementado em 1 para cada novo registro.
+
+> **Dica**: Para especificar que a coluna "Personid" deve começar no valor 10 e aumentar em 5, altere o _auto increment_ para ``AUTOINCREMENT(10,5)``.
+
+Para inserir um novo registro na tabela _Persons_, **NÃO** é necessário especificar um valor para a coluna "Personid" (um valor único será adicionado automaticamente):  
+
+```
+INSERT INTO Persons (FirstName, LastName)
+VALUES ('Lars', 'Monsen');
+```
+
+- A instrução SQL acima inseriria um novo registro na tabela _Persons_. A coluna "Personid" receberia um valor exclusivo. A coluna "FirstName" seria definida como (Lars) e a coluna "LastName" seria definida como (Monsen).
+
+### Sintaxe para Oracle:
+
+No Oracle, o código é um pouco mais complicado.
+
+É necessário criar um campo de auto incremento com o objeto de sequência (esse objeto gera uma sequência numérica).
+
+**Utilizando a sintaxe ``CREATE SEQUENCE``:**
+
+```
+CREATE SEQUENCE seq_person
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+CACHE 10;
+```
+
+- O código acima cria um objeto de sequência chamado "seq_person", que começa com 1 e será incrementado em 1. Ele também armazenará em cache até 10 valores para desempenho. A opção cache especifica quantos valores de sequência serão armazenados na memória para acesso mais rápido.
+
+Para inserir um novo registro na tabela _Persons_, deve-se utilizar a função ``nextval`` (esta função recupera o próximo valor da sequência "seq_person"):
+
+```
+INSERT INTO Persons (Personid, FirstName, LastName)
+VALUES (seq_person.nextval,'Lars','Monsen');
+```
+
+- A instrução SQL acima inseriria um novo registro na tabela _Persons_. A coluna "Personid" receberia o próximo número da sequência "seq_person". A coluna "FirstName" seria definida como (Lars) e a coluna "LastName" seria definida como (Monsen).
+
+---
+
+## SQL Dates
+
 

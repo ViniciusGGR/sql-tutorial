@@ -823,4 +823,71 @@ O valor padrão será adicionado a todos os novos registros, se nenhum outro val
 
 ## SQL Index
 
+A instrução ``CREATE INDEX`` é usada para criar índices em tabelas.
+
+Os índices são usados para recuperar dados do banco de dados mais rapidamente do que de outra forma. Os usuários não podem ver os índices, eles são usados apenas para agilizar as pesquisas/consultas.
+
+> **Nota**: Atualizar uma tabela com índices leva mais tempo do que atualizar uma tabela sem (porque os índices também precisam de uma atualização). Portanto é indicado a criação de índices _apenas em colunas_ que serão pesquisadas com mais frequência.
+
+**Sintaxe CREATE INDEX:**
+
+- Criar um índice em uma tabela. Valores duplicados são permitidos:  
+    ```
+    CREATE INDEX index_name
+    ON table_name (column1, column2, ...);
+    ```
+
+**Sintaxe CREATE UNIQUE INDEX:**
+
+- Cria um índice exclusivo em uma tabela. _Valores duplicados não são permitidos_:  
+    ```
+    CREATE UNIQUE INDEX index_name
+    ON table_name (column1, column2, ...);
+    ```
+
+> **Nota**: A sintaxe para criar índices varia entre diferentes bancos de dados. Portanto: Verifique a sintaxe para criar índices em seu banco de dados.
+
+### Exemplo CREATE INDEX:
+
+- A instrução SQL abaixo cria um índice denominado "idx_lastname" na coluna "LastName" na tabela _Persons_:  
+    ```
+    CREATE INDEX idx_lastname
+    ON Persons (LastName);
+    ```
+
+- Caso deseje criar um índice em uma combinação de colunas, pode listar os nomes das colunas entre parênteses, separados por vírgulas:  
+    ```
+    CREATE INDEX idx_pname
+    ON Persons (LastName, FirstName);
+    ```
+
+### Instrução DROP INDEX:
+
+- A instrução ``DROP INDEX`` é usada para excluir um índice em uma tabela:  
+
+    **MS Access:**
+    ```
+    DROP INDEX index_name ON table_name;
+    ```
+
+    **SQL Server:**
+    ```
+    DROP INDEX table_name.index_name;
+    ```
+
+    **DB2 | Oracle:**
+    ```
+    DROP INDEX index_name;
+    ```
+
+    **MySQL:**
+    ```
+    ALTER TABLE table_name
+    DROP INDEX index_name;
+    ```
+
+---
+
+## SQL Auto Increment
+
 

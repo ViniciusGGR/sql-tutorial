@@ -1010,4 +1010,75 @@ VALUES (seq_person.nextval,'Lars','Monsen');
 
 ## SQL Dates
 
+> A parte mais difícil ao trabalhar com _datas_ é ter certeza de que o **formato da data** que você está tentando inserir corresponde ao **formato da coluna de data** no _banco de dados_.
+
+Contanto que os dados contenham apenas a parte da data, as consultas funcionarão conforme o esperado. No entanto, se uma porção de tempo estiver envolvida, fica mais complicado.
+
+### Tipos de dados de SQL date:
+
+- O MySQL vem com os seguintes tipos de dados para armazenar uma data ou um valor de _data/hora_ no banco de dados:
+    - ``DATE`` - Formato: **AAAA-MM-DD**.
+    - ``DATETIME`` - Formato: **AAAA-MM-DD HH:MI:SS**.
+    - ``TIMESTAMP`` - Formato: **AAAA-MM-DD HH:MI:SS**.
+    - ``YEAR`` - Formato: **AAAA** ou **AA**.
+
+- O SQL Server vem com os seguintes tipos de dados para armazenar uma data ou um valor de data/hora no banco de dados:
+    - ``DATE`` - Formato: **AAAA-MM-DD**.
+    - ``DATETIME`` - Formato: **AAAA-MM-DD HH:MI:SS**.
+    - ``SMALLDATETIME`` - Formato: **AAAA-MM-DD HH:MI:SS**.
+    - ``TIMESTAMP`` - Formato: _Um número único_.
+
+> **Nota**: Os tipos de data são escolhidos para uma coluna quando é criado uma nova tabela no banco de dados!
+
+### Trabalhando com SQL dates:
+
+**Tabela "Orders":**
+
+| OrderId | ProductName            | OrderDate  |
+| ------- | ---------------------- | ---------- |
+| 1       | Geitost                | 2008-11-11 |
+| 2       | Camembert Pierrot      | 2008-11-09 |
+| 3       | Mozzarella di Giovanni | 2008-11-11 |
+| 4       | Mascarpone Fabioli     | 2008-10-29 |
+
+- Selecionando os registros com um _OrderDate_ de "2008-11-11" da tabela acima.
+
+Utilizando a instrução ``SELECT``:
+
+```
+SELECT * FROM Orders WHERE OrderDate='2008-11-11'
+```
+
+- O conjunto de resultados ficará assim:
+
+| OrderId | ProductName            | OrderDate  |
+| ------- | ---------------------- | ---------- |
+| 1       | Geitost                | 2008-11-11 |
+| 3       | Mozzarella di Giovanni | 2008-11-11 |
+
+> **Nota**: Duas datas podem ser facilmente comparadas se não houver nenhum componente de tempo envolvido!
+
+Agora, assumindo que a tabela "Orders" tem o componente de tempo adicionado na coluna "OrderDate":
+
+| OrderId | ProductName            | OrderDate           |
+| ------- | ---------------------- | ------------------- |
+| 1       | Geitost                | 2008-11-11 13:23:44 |
+| 2       | Camembert Pierrot      | 2008-11-09 15:45:21 |
+| 3       | Mozzarella di Giovanni | 2008-11-11 11:12:01 |
+| 4       | Mascarpone Fabioli     | 2008-10-29 14:56:59 |
+
+Utilizando a instrução ``SELECT`` acima:
+
+```
+SELECT * FROM Orders WHERE OrderDate='2008-11-11'
+```
+
+Não será obtido nenhum resultado! Isso ocorre porque a consulta está procurando apenas por datas sem parte de tempo.
+
+> **Dica**: Para manter as consultas simples e fáceis de manter, _não utilize componentes de tempo_ nas datas, a menos que seja necessário!
+
+---
+
+## SQL Views
+
 

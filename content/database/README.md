@@ -1081,4 +1081,91 @@ Não será obtido nenhum resultado! Isso ocorre porque a consulta está procuran
 
 ## SQL Views
 
+No SQL, uma _visualização_ é uma tabela virtual baseada no conjunto  de resultados de uma instrução SQL.
+
+Uma ``VIEW`` contém linhas e colunas, assim como uma tabela real. Os campos em uma ``VIEW`` são campos de uma ou mais tabelas reais no banco de dados.
+
+É possível adicionar instruções e funções SQL a uma ``VIEW`` e apresentar os dados como se fossem provenientes de uma única tabela.
+
+- Uma ``VIEW`` é criada com a instrução ``CREATE VIEW``.
+
+**Sintaxe CREATE VIEW:**
+
+```
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+> **Nota**: Uma ``VIEW`` sempre mostra dados atualizados! O mecanismo de banco de dados recria a visualização sempre que um usuário a consulta.
+
+### Exemplos SQL CREATE VIEW:
+
+- O SQL a seguir cria uma ``VIEW`` que mostra todos os clientes do Brasil:  
+    ```
+    CREATE VIEW [Brazil Customers] AS
+    SELECT CustomerName, ContactName
+    FROM Customers
+    WHERE Country = 'Brazil';
+    ```
+
+    - Consultando a ``VIEW`` acima da seguinte maneira:  
+        ```
+        SELECT * FROM [Brazil Customers];
+        ```
+
+- O SQL a seguir cria uma exibição que seleciona todos os produtos na tabela "Products" com um _Price_ maior que o _Price_ médio:  
+    ```
+    CREATE VIEW [Products Above Average Price] AS
+    SELECT ProductName, Price
+    FROM Products
+    WHERE Price > (SELECT AVG(Price) FROM Products);
+    ```
+
+    - Consultando a ``VIEW`` acima da seguinte maneira:  
+        ```
+        SELECT * FROM [Products Above Average Price];
+        ```
+
+### Atualizando uma Visualização SQL:
+
+Uma ``VIEW`` pode ser atualizada com a instrução ``CREATE OR REPLACE VIEW``:
+
+**Sintaxe SQL CREATE OR REPLACE VIEW:**
+
+```
+CREATE OR REPLACE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+- O SQL a seguir adiciona a coluna "City" à exibição _Brazil Customers_:  
+    ```
+    CREATE OR REPLACE VIEW [Brazil Customers] AS
+    SELECT CustomerName, ContactName, City
+    FROM Customers
+    WHERE Country = 'Brazil';
+    ```
+
+### Descartando uma Visualização SQL:
+
+Uma ``VIEW`` é excluída com a instrução ``DROP VIEW``.
+
+**Sintaxe SQL DROP VIEW:**
+
+```
+DROP VIEW view_name;
+```
+
+- O SQL a seguir remove a exibição _Brazil Customers_:  
+    ```
+    DROP VIEW [Brazil Customers];
+    ```
+
+---
+
+## SQL Injection
+
 

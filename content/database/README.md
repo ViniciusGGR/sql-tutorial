@@ -1168,4 +1168,142 @@ DROP VIEW view_name;
 
 ## SQL Injection
 
+O _SQL Injection_ é uma técnica de injeção de código que pode destruir seu banco de dados.
+
+O _SQL Injection_ é uma das técnicas de **hacking da web** mais comuns.
+
+O _SQL Injection_ é a colocação de código malicioso em instruções SQL, via entrada de **web pages**.
+
+### SQL in Web Pages:
+
+O _SQL Injection_ geralmente ocorre quando solicitado a entrada de um usuário, como o **nome de usuário/id**, e em vez de um **nome/id**, o usuário fornece uma instrução SQL que o usuário executará sem saber no banco de dados.
+
+- O exemplo a seguir, cria uma instrução ``SELECT`` adicionando uma variável (txtUserId) a uma string de seleção. A variável é obtida da entrada do usuário (getRequestString):  
+    ```
+    txtUserId = getRequestString("UserId");
+    txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+    ```
+
+### SQL Injection baseada em 1=1 é sempre True:
+
+No exemplo acima, o propósito original do código era criar uma instrução SQL para selecionar um usuário, com um determinado ID de usuário.
+
+Se não houver nada que impeça um usuário de inserir uma entrada "errada", o usuário pode inserir alguma entrada "inteligente" como esta:
+
+**ID do usuário:**
+| 105 OR 1=1 |
+| ---------- |
+
+- Então, a instrução SQL ficará assim:  
+    ```
+    SELECT * FROM Users WHERE UserId = 105 OR 1=1;
+    ```
+
+O SQL acima é válido e retornará TODAS as linhas da tabela "Users", pois **OR 1=1** é sempre TRUE.
+
+O exemplo acima parece perigoso? E se a tabela "Users" contiver nomes e senhas?
+
+- A instrução SQL acima é muito parecida com esta:  
+    ```
+    SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1;
+    ```
+
+> Um hacker pode obter acesso a todos os nomes de usuário e senhas em um banco de dados simplesmente inserindo 105 OU 1=1 no campo de entrada.
+
+### SQL Injection baseada em "=" é sempre True:
+
+Exemplo de login de usuário em um site:
+
+**Nome de usuário:**
+| John Doe |
+| -------- |
+
+**Senha:**
+| myPass |
+| ------ |
+
+```
+uName = getRequestString("username");
+uPass = getRequestString("userpassword");
+
+sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'
+```
+
+```
+SELECT * FROM Users WHERE Name ="John Doe" AND Pass ="myPass"
+```
+
+Um hacker pode obter acesso a nomes de usuários e senhas em um banco de dados simplesmente inserindo "OU""=" na caixa de texto de _nome de usuário_ ou _senha_:
+
+**Nome de usuário:**
+| " or ""=" |
+| --------- |
+
+**Senha:**
+| " or ""=" |
+| --------- |
+
+- O código no servidor criará uma instrução SQL válida como esta:  
+    ```
+    SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""=""
+    ```
+
+O SQL acima é válido e retornará todas as linhas da tabela "Users", desde que **OR** ""="" seja sempre TRUE.
+
+### SQL Injection baseada em Instruções SQL em lote:
+
+A maioria dos bancos de dados oferece suporte a _instruções SQL em lote_.
+
+Um _lote de instruções SQL_ é um grupo de duas ou mais instruções SQL, separadas por ponto-e-vírgula.
+
+- A instrução SQL abaixo retornará todas as linhas da tabela "Users" e, em seguida, excluirá a tabela "Suppliers":  
+    ```
+    SELECT * FROM Users; DROP TABLE Suppliers;
+    ```
+
+- Observe o seguinte exemplo:  
+    ```
+    txtUserId = getRequestString("UserId");
+    txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+    ```
+
+    - Entrada do usuário:
+
+    **ID do usuário:**
+    | 105; DROP TABLE Suppliers |
+    | ------------------------- |
+
+    - A instrução SQL válida ficaria assim:  
+        ```
+        SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;
+        ```
+
+### Use SQL Parameters para proteção:
+
+Para proteger um site do _SQL Injection_, pode utilizar parâmetros SQL.
+
+Parâmetros SQL são valores que são adicionados a uma consulta SQL em tempo de execução, de forma controlada.
+
+```
+txtUserId = getRequestString("UserId");
+txtSQL = "SELECT * FROM Users WHERE UserId = @0";
+db.Execute(txtSQL, txtUserId);
+```
+
+Os parâmetros são representados na instrução SQL por um marcador ``@``.
+
+O mecanismo SQL verifica cada parâmetro para garantir que ele esteja correto para sua coluna e seja tratado literalmente, e não como parte do SQL a ser executado.
+
+```
+txtNam = getRequestString("CustomerName");
+txtAdd = getRequestString("Address");
+txtCit = getRequestString("City");
+txtSQL = "INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2)";
+db.Execute(txtSQL, txtNam, txtAdd, txtCit);
+```
+
+---
+
+## SQL Hosting
+
 

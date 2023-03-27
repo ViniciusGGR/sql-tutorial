@@ -1306,4 +1306,38 @@ db.Execute(txtSQL, txtNam, txtAdd, txtCit);
 
 ## SQL Hosting
 
+Se deseja que o site seja capaz de _armazenar e recuperar dados_ de um banco de dados, o servidor web deve ter acesso a um sistema de banco de dados que use a linguagem SQL.
 
+Se o servidor web estiver hospedado em um _Provedor de Serviços de Internet_ (ISP), será preciso procurar por planos de hospedagem SQL.
+
+Os bancos de dados de hospedagem SQL mais comuns são SQL Server, Oracle, MySQL e MS Access.
+
+### SQL Server:
+
+- O SQL Server da Microsoft é um software de banco de dados popular para sites baseados em banco de dados com alto tráfego.
+
+O SQL Server é um sistema de banco de dados SQL muito poderoso, robusto e completo.
+
+### Oracle:
+
+- O Oracle também é um software de banco de dados popular para sites baseados em banco de dados com alto tráfego.
+
+O Oracle é um sistema de banco de dados SQL muito poderoso, robusto e completo.
+
+### MySQL:
+
+- MySQL também é um software de banco de dados popular para sites da web.
+
+O MySQL é um sistema de banco de dados SQL muito poderoso, robusto e completo.
+
+> O MySQL é uma alternativa barata às soluções caras da Microsoft e da Oracle.
+
+### MS Access:
+
+Quando um site requer apenas um banco de dados simples, o Microsoft Access pode ser uma solução.
+
+O MS Access não é adequado para tráfego muito alto e não é tão poderoso quanto MySQL, SQL Server ou Oracle.
+
+---
+
+## SQL Data Types

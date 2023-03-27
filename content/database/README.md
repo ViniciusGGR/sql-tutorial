@@ -1341,3 +1341,130 @@ O MS Access não é adequado para tráfego muito alto e não é tão poderoso qu
 ---
 
 ## SQL Data Types
+
+O _Data Type_ (tipo de dados) de uma coluna define qual valor a coluna pode conter: _integer_, _character_, _money_, _date and time_, _binary_...
+
+### Tipos de Dados SQL:
+
+Cada coluna em uma tabela de banco de dados deve ter um **nome** e um **tipo de dados**.
+
+> Um desenvolvedor SQL deve decidir que _tipo de dados_ serão armazenados dentro de cada coluna ao criar uma tabela. O tipo de dados é uma diretriz para o SQL entender que tipo de dados é esperado dentro de cada coluna e também identifica como o SQL irá interagir com os dados armazenados.
+
+> **Observação**: Os tipos de dados podem ter nomes diferentes em bancos de dados diferentes. E mesmo que o nome seja o mesmo, o tamanho e outros detalhes podem ser diferentes!
+
+### Tipos de dados do MySQL:
+
+- No MySQL existem três tipos principais de dados: _string_, _numeric_ e _date and time_.
+
+**String Data Types:**
+
+- ``CHAR(size)``
+- ``VARCHAR(size)``
+- ``BINARY(size)``
+- ``VARBINARY(size)``
+- ``TINYBLOB``
+- ``TINYTEXT``
+- ``TEXT(size)``
+- ``BLOB(size)``
+- ``MEDIUMTEXT``
+- ``MEDIUMBLOB``
+- ``LONGTEXT``
+- ``LONGBLOB``
+- ``ENUM(val1, val2, val3, ...)``
+- ``SET(val1, val2, val3, ...)``
+
+**Numeric Data Types:**
+
+- ``BIT(size)``
+- ``TINYINT(size)``
+- ``BOOL``
+- ``BOOLEAN``
+- ``SMALLINT(size)``
+- ``MEDIUMINT(size)``
+- ``INT(size)``
+- ``INTEGER(size)``
+- ``BIGINT(size)``
+- ``FLOAT(size, d)``
+- ``FLOAT(p)``
+- ``DOUBLE(size, d)``
+- ``DOUBLE PRECISION(size, d)``
+- ``DECIMAL(size, d)``
+- ``DEC(size, d)``
+
+> **Nota**: Todos os _tipos de dados_ numéricos podem ter uma opção extra: ``UNSIGNED`` ou ``ZEROFILL``. Se adicionado a opção ``UNSIGNED``, o MySQL _não permitirá valores negativos_ para a coluna. Se adicionado a opção ``ZEROFILL``, o MySQL também _adicionará automaticamente o atributo ``UNSIGNED`` à coluna_.
+
+**Date and Time Data Types:**
+
+- ``DATE``
+- ``DATETIME(fsp)``
+- ``TIMESTAMP(fsp)``
+- ``TIME(fsp)``
+- ``YEAR``
+
+### Tipos de dados do SQL Server:
+
+**String Data Types:**
+
+- ``char(n)``
+- ``varchar(n)``
+- ``varchar(max)``
+- ``text``
+- ``nchar``
+- ``nvarchar``
+- ``nvarchar(max)``
+- ``ntext``
+- ``binary(n)``
+- ``varbinary``
+- ``varbinary(max)``
+- ``image``
+
+**Numeric Data Types:**
+
+- ``bit``
+- ``tinyint``
+- ``smallint``
+- ``int``
+- ``bigint``
+- ``decimal(p,s)``
+- ``numeric(p,s)``
+- ``smallmoney``
+- ``money``
+- ``float(n)``
+- ``real``
+
+**Date and Time Data Types:**
+
+- ``datetime``
+- ``datetime2``
+- ``smalldatetime``
+- ``date``
+- ``time``
+- ``datetimeoffset``
+- ``timestamp``
+
+**Other Data Types:**
+
+- ``sql_variant``
+- ``uniqueidentifier``
+- ``xml``
+- ``cursor``
+- ``table``
+
+### Tipos de dados do MS Access:
+
+- ``Text``
+- ``Memo``
+- ``Byte``
+- ``Integer``
+- ``Long``
+- ``Single``
+- ``Double``
+- ``Currency``
+- ``AutoNumber``
+- ``Date/Time``
+- ``Yes/No``
+- ``Ole Object``
+- ``Hyperlink``
+- ``Lookup Wizard``
+
+---

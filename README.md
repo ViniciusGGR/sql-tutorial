@@ -209,5 +209,10 @@ Curso completo sobre SQL do site W3Schools - [**Link - Tutorial SQL**](https://w
     - [Oracle](./content/database/README.md/#oracle)
     - [MySQL](./content/database/README.md/#mysql)
     - [MS Access](./content/database/README.md/#ms-access)
-- [SQL Data Types]()
+- [SQL Data Types](./content/database/README.md/#sql-data-types)
+    - [SQL Data Types](./content/database/README.md/#tipos-de-dados-sql)
+    - [MySQL Data Types](./content/database/README.md/#tipos-de-dados-do-mysql)
+    - [SQL Server Data Types](./content/database/README.md/#tipos-de-dados-do-sql-server)
+    - [MS Access Data Types](./content/database/README.md/#tipos-de-dados-do-ms-access)
 
+---
